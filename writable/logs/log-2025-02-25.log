@@ -1,0 +1,83 @@
+ERROR - 2025-02-25 11:55:26 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'aku_db_absen' in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'aku_db_absen', 3306, '', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\al_0025\aku_absen\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 D:\al_0025\aku_absen\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#5 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 D:\al_0025\aku_absen\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\al_0025\aku_absen\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\al_0025\aku_absen\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\al_0025\aku_absen\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 D:\al_0025\aku_absen\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 D:\al_0025\aku_absen\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'aku_db_absen' in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 D:\al_0025\aku_absen\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#4 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 D:\al_0025\aku_absen\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 D:\al_0025\aku_absen\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 D:\al_0025\aku_absen\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 D:\al_0025\aku_absen\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#10 D:\al_0025\aku_absen\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 D:\al_0025\aku_absen\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+ERROR - 2025-02-25 11:55:57 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '1 PRIMARY KEY(`id_siswa`)
+) DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4...' at line 7 in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `s...', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `s...')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `s...')
+#3 D:\al_0025\aku_absen\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `s...')
+#4 D:\al_0025\aku_absen\app\Database\Migrations\2025-02-25-114700_CreateTableSiswa.php(34): CodeIgniter\Database\Forge->createTable('siswa')
+#5 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateTableSiswa->up()
+#6 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\al_0025\aku_absen\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\al_0025\aku_absen\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\al_0025\aku_absen\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\al_0025\aku_absen\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 D:\al_0025\aku_absen\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 D:\al_0025\aku_absen\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-02-25 11:56:58 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '1 PRIMARY KEY(`id_siswa`)
+) DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4...' at line 7 in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `s...', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `s...')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `s...')
+#3 D:\al_0025\aku_absen\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `s...')
+#4 D:\al_0025\aku_absen\app\Database\Migrations\2025-02-25-114700_CreateTableSiswa.php(34): CodeIgniter\Database\Forge->createTable('siswa')
+#5 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateTableSiswa->up()
+#6 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\al_0025\aku_absen\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\al_0025\aku_absen\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\al_0025\aku_absen\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\al_0025\aku_absen\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 D:\al_0025\aku_absen\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 D:\al_0025\aku_absen\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-02-25 11:59:29 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '1 PRIMARY KEY(`id_siswa`)
+) DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4...' at line 7 in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `s...', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `s...')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `s...')
+#3 D:\al_0025\aku_absen\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `s...')
+#4 D:\al_0025\aku_absen\app\Database\Migrations\2025-02-25-114700_CreateTableSiswa.php(34): CodeIgniter\Database\Forge->createTable('siswa')
+#5 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateTableSiswa->up()
+#6 D:\al_0025\aku_absen\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\al_0025\aku_absen\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\al_0025\aku_absen\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\al_0025\aku_absen\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\al_0025\aku_absen\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 D:\al_0025\aku_absen\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 D:\al_0025\aku_absen\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}

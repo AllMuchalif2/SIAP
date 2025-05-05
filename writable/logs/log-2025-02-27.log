@@ -1,0 +1,363 @@
+CRITICAL - 2025-02-27 01:34:56 --> Error: Class "App\Models\Siswa_model" not found
+[Method: GET, Route: siswa]
+in APPPATH\Controllers\Siswa.php on line 13.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Siswa->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-27 01:41:24 --> ErrorException: Undefined variable $users
+[Method: GET, Route: siswa]
+in APPPATH\Views\siswa\index.php on line 27.
+ 1 APPPATH\Views\siswa\index.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $users', 'D:\\al_0025\\aku_absen\\app\\Views\\siswa\\index.php', 27)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(19): view('siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-27 02:10:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-02-27 02:10:49 --> mysqli_sql_exception: Column 'status' cannot be null in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `si...', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `si...')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `si...')
+#3 D:\al_0025\aku_absen\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `si...', Array, false)
+#4 D:\al_0025\aku_absen\app\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 D:\al_0025\aku_absen\app\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa(Array)
+#6 D:\al_0025\aku_absen\system\CodeIgniter.php(933): App\Controllers\Siswa->save()
+#7 D:\al_0025\aku_absen\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+#8 D:\al_0025\aku_absen\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\al_0025\aku_absen\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 D:\al_0025\aku_absen\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\al_0025\aku_absen\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 D:\al_0025\aku_absen\system\rewrite.php(44): require_once('D:\\al_0025\\aku_...')
+#13 {main}
+CRITICAL - 2025-02-27 02:10:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' cannot be null
+[Method: POST, Route: siswa/save]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (:nama:, :sekolah:, :status:)', [...], false)
+ 2 APPPATH\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->save()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-27 02:10:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (:nama:, :sekolah:, :status:)', [...], false)
+ 4 APPPATH\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->save()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-27 02:10:49 --> [Caused by] mysqli_sql_exception: Column 'status' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (:nama:, :sekolah:, :status:)', [...], false)
+ 5 APPPATH\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->save()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-27 02:10:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-02-27 02:11:27 --> mysqli_sql_exception: Column 'status' cannot be null in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `si...', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `si...')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `si...')
+#3 D:\al_0025\aku_absen\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `si...', Array, false)
+#4 D:\al_0025\aku_absen\app\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 D:\al_0025\aku_absen\app\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa(Array)
+#6 D:\al_0025\aku_absen\system\CodeIgniter.php(933): App\Controllers\Siswa->save()
+#7 D:\al_0025\aku_absen\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+#8 D:\al_0025\aku_absen\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\al_0025\aku_absen\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 D:\al_0025\aku_absen\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\al_0025\aku_absen\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 D:\al_0025\aku_absen\system\rewrite.php(44): require_once('D:\\al_0025\\aku_...')
+#13 {main}
+CRITICAL - 2025-02-27 02:11:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' cannot be null
+[Method: POST, Route: siswa/save]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (:nama:, :sekolah:, :status:)', [...], false)
+ 2 APPPATH\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->save()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-27 02:11:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (:nama:, :sekolah:, :status:)', [...], false)
+ 4 APPPATH\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->save()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-27 02:11:27 --> [Caused by] mysqli_sql_exception: Column 'status' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (:nama:, :sekolah:, :status:)', [...], false)
+ 5 APPPATH\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->save()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-27 02:11:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-02-27 02:12:37 --> mysqli_sql_exception: Column 'status' cannot be null in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `si...', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `si...')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `si...')
+#3 D:\al_0025\aku_absen\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `si...', Array, false)
+#4 D:\al_0025\aku_absen\app\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 D:\al_0025\aku_absen\app\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa(Array)
+#6 D:\al_0025\aku_absen\system\CodeIgniter.php(933): App\Controllers\Siswa->save()
+#7 D:\al_0025\aku_absen\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+#8 D:\al_0025\aku_absen\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\al_0025\aku_absen\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 D:\al_0025\aku_absen\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\al_0025\aku_absen\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 D:\al_0025\aku_absen\system\rewrite.php(44): require_once('D:\\al_0025\\aku_...')
+#13 {main}
+CRITICAL - 2025-02-27 02:12:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' cannot be null
+[Method: POST, Route: siswa/save]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (:nama:, :sekolah:, :status:)', [...], false)
+ 2 APPPATH\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->save()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-27 02:12:37 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (:nama:, :sekolah:, :status:)', [...], false)
+ 4 APPPATH\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->save()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-27 02:12:37 --> [Caused by] mysqli_sql_exception: Column 'status' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (\'a\', \'1\', NULL)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `siswa` (`nama`, `sekolah`, `status`) VALUES (:nama:, :sekolah:, :status:)', [...], false)
+ 5 APPPATH\Models\Siswa_model.php(25): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Siswa.php(35): App\Models\Siswa_model->insertSiswa([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->save()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-27 05:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-27 05:12:30 --> ErrorException: Undefined array key "id_menu"
+[Method: GET, Route: siswa]
+in APPPATH\Views\siswa\index.php on line 36.
+ 1 APPPATH\Views\siswa\index.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_menu"', 'D:\\al_0025\\aku_absen\\app\\Views\\siswa\\index.php', 36)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(19): view('siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-27 05:31:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:32:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:33:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:33:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:34:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:34:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:34:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:34:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:35:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:36:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:42:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:42:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:51:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:51:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:52:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:55:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:56:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:59:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 05:59:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:01:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:15:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:16:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:16:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:21:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:21:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:21:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:22:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:25:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:25:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:25:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:25:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:25:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:28:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:28:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:28:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:28:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-27 06:28:57 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "siswa/edit.php"
+[Method: GET, Route: siswa/edit/15115]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('siswa/edit.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('siswa/edit', [], true)
+ 3 APPPATH\Controllers\Siswa.php(53): view('siswa/edit', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->edit('15115')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-27 06:29:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:35:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-27 06:35:29 --> ErrorException: Undefined variable $category
+[Method: GET, Route: siswa/edit/15115]
+in APPPATH\Views\siswa\edit.php on line 50.
+ 1 APPPATH\Views\siswa\edit.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $category', 'D:\\al_0025\\aku_absen\\app\\Views\\siswa\\edit.php', 50)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\siswa\\edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('siswa/edit', [], true)
+ 5 APPPATH\Controllers\Siswa.php(53): view('siswa/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Siswa->edit('15115')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-27 06:35:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:35:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:35:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:35:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:38:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:38:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:42:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:42:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:43:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:43:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:43:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:43:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:43:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:43:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:46:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 06:47:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:05:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:05:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:05:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:05:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:05:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:05:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:05:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:05:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:06:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:06:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:06:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:09:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:09:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:09:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:09:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 08:10:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 09:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 09:58:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 09:58:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:03:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:04:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:04:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:04:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:04:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-27 10:05:15 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "absen/lihat.php"
+[Method: GET, Route: absen]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('absen/lihat.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 3 APPPATH\Controllers\Absen.php(64): view('absen/lihat', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->lihatAbsensi()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-27 10:08:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:08:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:08:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:09:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:09:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:09:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:09:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:09:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:09:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:09:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:10:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:10:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:11:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:11:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:11:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:11:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:11:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:11:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-27 10:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

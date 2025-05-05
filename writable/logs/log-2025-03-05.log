@@ -1,0 +1,82 @@
+INFO - 2025-03-05 08:57:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-05 08:57:06 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'aku_db_absen', 3306, '', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\al_0025\aku_absen\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`....', Array, false)
+#4 D:\al_0025\aku_absen\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\al_0025\aku_absen\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\al_0025\aku_absen\app\Models\Absen_model.php(32): CodeIgniter\BaseModel->findAll()
+#7 D:\al_0025\aku_absen\app\Controllers\Absen.php(78): App\Models\Absen_model->getAbsensiByDate('2025-03-05')
+#8 D:\al_0025\aku_absen\system\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+#9 D:\al_0025\aku_absen\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+#10 D:\al_0025\aku_absen\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\al_0025\aku_absen\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 D:\al_0025\aku_absen\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 D:\al_0025\aku_absen\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 D:\al_0025\aku_absen\system\rewrite.php(44): require_once('D:\\al_0025\\aku_...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\al_0025\aku_absen\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`....', Array, false)
+#3 D:\al_0025\aku_absen\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\al_0025\aku_absen\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 D:\al_0025\aku_absen\app\Models\Absen_model.php(32): CodeIgniter\BaseModel->findAll()
+#6 D:\al_0025\aku_absen\app\Controllers\Absen.php(78): App\Models\Absen_model->getAbsensiByDate('2025-03-05')
+#7 D:\al_0025\aku_absen\system\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+#8 D:\al_0025\aku_absen\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+#9 D:\al_0025\aku_absen\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\al_0025\aku_absen\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\al_0025\aku_absen\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\al_0025\aku_absen\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\al_0025\aku_absen\system\rewrite.php(44): require_once('D:\\al_0025\\aku_...')
+#14 {main}
+CRITICAL - 2025-03-05 08:57:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`keterangan` = :absen.keterangan:
+AND `absen`.`tanggal` = :absen.tanggal:
+ORDER BY `absen`.`waktu` ASC', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\Absen_model.php(32): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\Absen.php(78): App\Models\Absen_model->getAbsensiByDate('2025-03-05')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-03-05 08:57:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 08:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 08:57:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 08:58:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 08:59:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 09:00:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 09:00:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 09:00:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 09:01:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 09:01:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 09:26:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 09:37:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 09:42:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 09:42:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 10:43:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 10:43:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 10:43:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 10:43:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 10:43:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 10:43:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 10:43:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 10:43:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-05 10:44:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

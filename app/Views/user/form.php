@@ -1,0 +1,58 @@
+<?= view('parts/header') ?>
+<?= view('parts/sidebar') ?>
+
+<div class="container mt-4">
+
+    <div class="mb-3">
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php if (is_array(session()->getFlashdata('error'))): ?>
+                    <?= implode('<br>', session()->getFlashdata('error')) ?>
+                <?php endif ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= session()->getFlashdata('success') ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <div class="card shadow rounded">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><?= isset($user) ? 'Edit' : 'Tambah' ?> User</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" action="<?= isset($user) ? '/user/update/' . $user['id'] : '/user/save' ?>">
+                <?= csrf_field() ?>
+
+                <br>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" value="<?= old('username', $user['username'] ?? '') ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" class="form-control" value="<?= old('name', $user['name'] ?? '') ?>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="role" class="form-label">Jabatan</label>
+                    <select name="role" id="role" class="form-select" required>
+                        <option value="">Pilih Status</option>
+                        <option value="admin" <?= old('role', $user['role'] ?? '') == 'admin' ? 'selected' : '' ?>>Admin</option>
+                        <option value="asisten" <?= old('role', $user['role'] ?? '') == 'asisten' ? 'selected' : '' ?>>Asisten</option>
+                    </select>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a href="<?= base_url('user') ?>" class="btn btn-outline-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-primary"><?= isset($user) ? 'Update' : 'Simpan' ?></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?= view('parts/footer') ?>

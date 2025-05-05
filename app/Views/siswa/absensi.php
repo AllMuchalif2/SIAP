@@ -1,0 +1,115 @@
+<?= view('parts/header'); ?>
+<?= view('parts/sidebar'); ?>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5>Detail Absensi Siswa</h5>
+        </div>
+        <div class="card-body">
+            <?php if ($siswa): ?>
+                <div class="row mb-4 mt-4">
+                    <div class="col-md-6">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">ID Siswa</th>
+                                <td><?= esc($siswa['id_siswa']); ?></td>
+                            </tr>
+                            <tr>
+                                <th>Nama</th>
+                                <td><?= esc($siswa['nama']); ?></td>
+                            </tr>
+                            <tr>
+                                <th>Sekolah</th>
+                                <td><?= esc($siswa['sekolah']); ?></td>
+                            </tr>
+                            <tr>
+                                <th>Total Absensi</th>
+                                <td><?= $summary->total_records ?? 0; ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-bordered">
+
+                            <tr>
+                                <th>Total Hadir</th>
+                                <td><?= $summary->hadir ?? 0; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Total Sakit</th>
+                                <td><?= $summary->sakit ?? 0; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Total Izin</th>
+                                <td><?= $summary->izin ?? 0; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Total Alpa</th>
+                                <td><?= $summary->alpa ?? 0; ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <h5 class="mb-3">Riwayat Absensi</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped ">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($absensi)): ?>
+                                <?php $no = 1; ?>
+                                <?php foreach ($absensi as $row): ?>
+                                    <tr class="<?= getStatusClass($row['keterangan']); ?>">
+                                        <td><?= $no++; ?></td>
+                                        <td><?= date('d-m-Y', strtotime($row['tanggal'])); ?></td>
+                                        <td><?= esc($row['keterangan']); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="3" class="text-center">Tidak ada data absensi</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-4">
+                    <a href="<?= base_url('siswa'); ?>" class="btn btn-secondary">Kembali</a>
+                </div>
+            <?php else: ?>
+                <div class="alert alert-danger">
+                    Data siswa tidak ditemukan
+                </div>
+                <a href="<?= base_url('siswa'); ?>" class="btn btn-secondary">Kembali</a>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<?php
+// Helper function for row colors
+function getStatusClass($keterangan)
+{
+    switch ($keterangan) {
+        case 'Hadir':
+            return 'table-success';
+        case 'Sakit':
+            return 'table-warning';
+        case 'Izin':
+            return 'table-info';
+        case 'Alpa':
+            return 'table-danger';
+        default:
+            return '';
+    }
+}
+?>
+<?= view('parts/footer'); ?>

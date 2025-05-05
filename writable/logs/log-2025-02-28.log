@@ -1,0 +1,739 @@
+INFO - 2025-02-28 01:15:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:15:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:16:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:16:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:16:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:20:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:24:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:25:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 01:32:02 --> ErrorException: Undefined variable $title
+[Method: GET, Route: /]
+in APPPATH\Views\absen\index.php on line 7.
+ 1 APPPATH\Views\absen\index.php(7): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\index.php', 7)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/index', [], true)
+ 5 APPPATH\Controllers\Absen.php(39): view('absen/index')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 01:32:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:33:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:34:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:34:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:34:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:35:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:35:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:36:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:36:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:37:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:37:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:37:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:38:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:38:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:38:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:40:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:40:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:41:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:41:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:41:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:41:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:43:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:48:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:56:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:56:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:56:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:57:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:57:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:57:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 01:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:01:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:01:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:01:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:02:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:02:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:02:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:04:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:04:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:05:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:05:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:05:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:05:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:05:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:06:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:06:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:06:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:06:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:06:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:08:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:16:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:16:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:17:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:17:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 02:21:45 --> ErrorException: Undefined array key "nama"
+[Method: POST, Route: absen/absen]
+in APPPATH\Controllers\Absen.php on line 56.
+ 1 APPPATH\Controllers\Absen.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama"', 'D:\\al_0025\\aku_absen\\app\\Controllers\\Absen.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->absensi()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 02:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:26:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:26:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 02:26:42 --> ErrorException: Undefined array key "nama"
+[Method: POST, Route: absen/absen]
+in APPPATH\Controllers\Absen.php on line 52.
+ 1 APPPATH\Controllers\Absen.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama"', 'D:\\al_0025\\aku_absen\\app\\Controllers\\Absen.php', 52)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->absensi()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 02:28:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:28:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:28:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:28:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:28:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:28:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:28:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 02:29:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 06:39:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 06:39:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 06:42:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 06:42:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 13:51:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 13:51:55 --> ErrorException: Undefined array key "status"
+[Method: POST, Route: absen/absen]
+in APPPATH\Controllers\Absen.php on line 53.
+ 1 APPPATH\Controllers\Absen.php(53): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "status"', 'D:\\al_0025\\aku_absen\\app\\Controllers\\Absen.php', 53)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->absensi()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 13:55:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 13:55:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 13:55:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 13:56:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 13:56:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:01:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:01:40 --> ErrorException: Undefined variable $sudah_absen
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 17.
+ 1 APPPATH\Views\absen\lihat.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sudah_absen', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 17)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(75): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->lihatAbsensi()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:03:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:06:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-02-28 15:06:32 --> mysqli_sql_exception: Unknown column 'absensi.id_siswa' in 'field list' in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `absensi...', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `absensi...')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `absensi...')
+#3 D:\al_0025\aku_absen\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absensi...', Array, false)
+#4 D:\al_0025\aku_absen\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\al_0025\aku_absen\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\al_0025\aku_absen\app\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+#7 D:\al_0025\aku_absen\system\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+#8 D:\al_0025\aku_absen\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+#9 D:\al_0025\aku_absen\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\al_0025\aku_absen\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\al_0025\aku_absen\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\al_0025\aku_absen\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\al_0025\aku_absen\system\rewrite.php(44): require_once('D:\\al_0025\\aku_...')
+#14 {main}
+CRITICAL - 2025-02-28 15:06:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'absensi.id_siswa' in 'field list'
+[Method: GET, Route: dashboard/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absensi`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absensi`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absensi`.`id_siswa`
+WHERE `absensi`.`tanggal` = :absensi.tanggal:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-28 15:06:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'absensi.id_siswa' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `absensi`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absensi`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absensi`.`id_siswa`
+WHERE `absensi`.`tanggal` = \'2025-02-28\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `absensi`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absensi`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absensi`.`id_siswa`
+WHERE `absensi`.`tanggal` = \'2025-02-28\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absensi`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absensi`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absensi`.`id_siswa`
+WHERE `absensi`.`tanggal` = :absensi.tanggal:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-28 15:06:32 --> [Caused by] mysqli_sql_exception: Unknown column 'absensi.id_siswa' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `absensi`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absensi`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absensi`.`id_siswa`
+WHERE `absensi`.`tanggal` = \'2025-02-28\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `absensi`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absensi`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absensi`.`id_siswa`
+WHERE `absensi`.`tanggal` = \'2025-02-28\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `absensi`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absensi`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absensi`.`id_siswa`
+WHERE `absensi`.`tanggal` = \'2025-02-28\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absensi`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absensi`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absensi`.`id_siswa`
+WHERE `absensi`.`tanggal` = :absensi.tanggal:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:07:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-02-28 15:07:45 --> mysqli_sql_exception: Unknown column 'absen.waktu_absen' in 'field list' in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `absen`....', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `absen`....')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `absen`....')
+#3 D:\al_0025\aku_absen\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`....', Array, false)
+#4 D:\al_0025\aku_absen\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\al_0025\aku_absen\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\al_0025\aku_absen\app\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+#7 D:\al_0025\aku_absen\system\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+#8 D:\al_0025\aku_absen\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+#9 D:\al_0025\aku_absen\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\al_0025\aku_absen\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\al_0025\aku_absen\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\al_0025\aku_absen\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\al_0025\aku_absen\system\rewrite.php(44): require_once('D:\\al_0025\\aku_...')
+#14 {main}
+CRITICAL - 2025-02-28 15:07:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'absen.waktu_absen' in 'field list'
+[Method: GET, Route: dashboard/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = :absen.tanggal:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-28 15:07:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'absen.waktu_absen' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = :absen.tanggal:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-28 15:07:45 --> [Caused by] mysqli_sql_exception: Unknown column 'absen.waktu_absen' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = :absen.tanggal:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:07:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-02-28 15:07:48 --> mysqli_sql_exception: Unknown column 'absen.waktu_absen' in 'field list' in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `absen`....', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `absen`....')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `absen`....')
+#3 D:\al_0025\aku_absen\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`....', Array, false)
+#4 D:\al_0025\aku_absen\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\al_0025\aku_absen\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\al_0025\aku_absen\app\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+#7 D:\al_0025\aku_absen\system\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+#8 D:\al_0025\aku_absen\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+#9 D:\al_0025\aku_absen\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\al_0025\aku_absen\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\al_0025\aku_absen\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\al_0025\aku_absen\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\al_0025\aku_absen\system\rewrite.php(44): require_once('D:\\al_0025\\aku_...')
+#14 {main}
+CRITICAL - 2025-02-28 15:07:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'absen.waktu_absen' in 'field list'
+[Method: GET, Route: dashboard/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = :absen.tanggal:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-28 15:07:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'absen.waktu_absen' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = :absen.tanggal:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-28 15:07:48 --> [Caused by] mysqli_sql_exception: Unknown column 'absen.waktu_absen' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = \'2025-02-28\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `absen`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`, `absen`.`waktu_absen`
+FROM `absen`
+JOIN `siswa` ON `siswa`.`id_siswa` = `absen`.`id_siswa`
+WHERE `absen`.`tanggal` = :absen.tanggal:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Absen.php(86): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:08:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:08:07 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "lihat.php"
+[Method: GET, Route: dashboard/]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('lihat.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('lihat', [], true)
+ 3 APPPATH\Controllers\Absen.php(95): view('lihat', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:08:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:09:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:03 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:19 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:26 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:27 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:27 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:28 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:28 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:28 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:29 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:09:29 --> ErrorException: Undefined array key "waktu_absen"
+[Method: GET, Route: dashboard/]
+in APPPATH\Views\absen\lihat.php on line 22.
+ 1 APPPATH\Views\absen\lihat.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "waktu_absen"', 'D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php', 22)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\al_0025\\aku_absen\\app\\Views\\absen\\lihat.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('absen/lihat', [], true)
+ 5 APPPATH\Controllers\Absen.php(95): view('absen/lihat', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:09:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:10:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:10:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:10:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:34:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:34:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:35:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:38:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:38:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:39:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:39:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:39:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:39:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:40:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:40:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:41:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:41:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:41:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:42:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-02-28 15:42:52 --> mysqli_sql_exception: Unknown column 'absens.tanggal' in 'where clause' in D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\al_0025\aku_absen\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `siswa`....', 0)
+#1 D:\al_0025\aku_absen\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `siswa`....')
+#2 D:\al_0025\aku_absen\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `siswa`....')
+#3 D:\al_0025\aku_absen\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `siswa`....', Array, false)
+#4 D:\al_0025\aku_absen\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\al_0025\aku_absen\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\al_0025\aku_absen\app\Controllers\Absen.php(93): CodeIgniter\BaseModel->findAll()
+#7 D:\al_0025\aku_absen\system\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+#8 D:\al_0025\aku_absen\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+#9 D:\al_0025\aku_absen\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\al_0025\aku_absen\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\al_0025\aku_absen\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\al_0025\aku_absen\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\al_0025\aku_absen\system\rewrite.php(44): require_once('D:\\al_0025\\aku_...')
+#14 {main}
+CRITICAL - 2025-02-28 15:42:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'absens.tanggal' in 'where clause'
+[Method: GET, Route: dashboard/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `siswa`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`
+FROM `siswa`
+LEFT JOIN `absen` ON `absen`.`id_siswa` = `siswa`.`id_siswa`
+WHERE `absen`.`keterangan` = :absen.keterangan:
+AND `absens`.`tanggal` = :absens.tanggal:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Absen.php(93): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-28 15:42:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'absens.tanggal' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `siswa`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`
+FROM `siswa`
+LEFT JOIN `absen` ON `absen`.`id_siswa` = `siswa`.`id_siswa`
+WHERE `absen`.`keterangan` = \'Alpa\'
+AND `absens`.`tanggal` = \'2025-02-28\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `siswa`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`
+FROM `siswa`
+LEFT JOIN `absen` ON `absen`.`id_siswa` = `siswa`.`id_siswa`
+WHERE `absen`.`keterangan` = \'Alpa\'
+AND `absens`.`tanggal` = \'2025-02-28\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `siswa`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`
+FROM `siswa`
+LEFT JOIN `absen` ON `absen`.`id_siswa` = `siswa`.`id_siswa`
+WHERE `absen`.`keterangan` = :absen.keterangan:
+AND `absens`.`tanggal` = :absens.tanggal:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Absen.php(93): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+CRITICAL - 2025-02-28 15:42:52 --> [Caused by] mysqli_sql_exception: Unknown column 'absens.tanggal' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `siswa`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`
+FROM `siswa`
+LEFT JOIN `absen` ON `absen`.`id_siswa` = `siswa`.`id_siswa`
+WHERE `absen`.`keterangan` = \'Alpa\'
+AND `absens`.`tanggal` = \'2025-02-28\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `siswa`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`
+FROM `siswa`
+LEFT JOIN `absen` ON `absen`.`id_siswa` = `siswa`.`id_siswa`
+WHERE `absen`.`keterangan` = \'Alpa\'
+AND `absens`.`tanggal` = \'2025-02-28\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `siswa`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`
+FROM `siswa`
+LEFT JOIN `absen` ON `absen`.`id_siswa` = `siswa`.`id_siswa`
+WHERE `absen`.`keterangan` = \'Alpa\'
+AND `absens`.`tanggal` = \'2025-02-28\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `siswa`.`id_siswa`, `siswa`.`nama`, `siswa`.`sekolah`
+FROM `siswa`
+LEFT JOIN `absen` ON `absen`.`id_siswa` = `siswa`.`id_siswa`
+WHERE `absen`.`keterangan` = :absen.keterangan:
+AND `absens`.`tanggal` = :absens.tanggal:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Absen.php(93): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->dashboard()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
+INFO - 2025-02-28 15:43:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:43:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:44:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:44:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:44:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-02-28 15:44:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-02-28 15:44:56 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login_view.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login_view.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('login_view', [], true)
+ 3 APPPATH\Controllers\Absen.php(133): view('login_view')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Absen->login()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Absen))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\al_0025\\aku_absen\\public\\index.php')
