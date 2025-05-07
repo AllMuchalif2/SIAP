@@ -76,6 +76,12 @@ $route = service('uri')->getSegment(1);
                                     <span>Kelola Absensi</span>
                                 </a>
                             </li>
+                            <li class="sidebar-item <?= ($route == 'riwayat') ? 'active' : '' ?>">
+                                <a href="/riwayat" class='sidebar-link'>
+                                    <i class="bi bi-clipboard-check"></i>
+                                    <span>Riwayat Absensi</span>
+                                </a>
+                            </li>
                             <li class="sidebar-item <?= ($route == 'user') ? 'active' : '' ?>">
                                 <a href="/user" class='sidebar-link'>
                                     <i class="bi bi-clipboard-check"></i>

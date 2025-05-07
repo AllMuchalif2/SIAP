@@ -14,13 +14,15 @@ class Absen extends Controller
     protected $siswaModel;
     protected $userModel;
     protected $session;
+    protected $db;
 
 
     public function __construct()
     {
         $this->absensiModel = new Absen_model();
         $this->siswaModel = new Siswa_model();
-        $this->userModel = new User_model();
+        $this->session = session();
+        $this->db = \Config\Database::connect();
         $this->session = session();
     }
 
@@ -116,7 +118,7 @@ class Absen extends Controller
                     $successCount++;
                 } catch (\Exception $e) {
                     $errorCount++;
-                    log_message('error', 'Failed to insert attendance: ' . $e->getMessage());
+                    log_message('error', 'gagal mengabsen: ' . $e->getMessage());
                 }
             }
         }
@@ -170,18 +172,74 @@ class Absen extends Controller
 
     public function update()
     {
-        $idSiswa = $this->request->getPost('id');
-        $keterangan = $this->request->getPost('keterangan');
-        $tanggal = $this->request->getPost('tanggal');
-        $waktu = ($keterangan === 'Hadir') ? date('H:i:s') : null;
+        $idSiswa     = $this->request->getPost('id');
+        $keterangan  = $this->request->getPost('keterangan');
+        $tanggal     = $this->request->getPost('tanggal');
+        $absen = $this->db->table('absen')
+            ->select('absen.*, siswa.nama')
+            ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
+            ->where('absen.id_siswa', $idSiswa)
+            ->where('absen.tanggal', $tanggal)
+            ->get()
+            ->getRowArray();
 
-        $this->absensiModel->where('id_siswa', $idSiswa)
+
+        $username    = session()->get('username'); // Ambil dari session
+
+        // // Ambil data absensi lama
+        // $absen = $this->absensiModel
+        //     ->where('id_siswa', $idSiswa)
+        //     ->where('tanggal', $tanggal)
+        //     ->first();
+
+        if (!$absen) {
+            return redirect()->back()->with('error', 'Data absensi tidak ditemukan.');
+        }
+
+        $waktuBaru = ($keterangan === 'Hadir') ? date('H:i:s') : null;
+
+        // Simpan update
+        $this->absensiModel
+            ->where('id_siswa', $idSiswa)
             ->where('tanggal', $tanggal)
             ->set([
                 'keterangan' => $keterangan,
-                'waktu' => $waktu
+                'waktu'      => $waktuBaru
             ])
             ->update();
+        // dd($absen);
+
+        // Simpan ke tabel log
+        $db = \Config\Database::connect();
+        $db->table('absensi_log')->insert([
+            'id_absen'         => $absen['id_absen'], // pastikan ada kolom 'id' di absensi
+            'id_siswa'         => $absen['id_siswa'],
+            'nama_siswa'       => $absen['nama'],
+            'keterangan_lama'  => $absen['keterangan'],
+            'keterangan_baru'  => $keterangan,
+            'waktu_lama'       => $absen['waktu'],
+            'waktu_baru'       => $waktuBaru,
+            'username'         => $username,
+            'updated_at'       => date('Y-m-d H:i:s')
+        ]);
+
         return redirect()->back()->with('success', 'Keterangan berhasil diupdate.');
+    }
+
+    public function riwayat()
+    {
+        $tanggal = $this->request->getGet('tanggal'); // filter opsional
+        $builder = $this->db->table('absensi_log');
+
+        if ($tanggal) {
+            $builder->where('DATE(updated_at)', $tanggal);
+        }
+
+        $log = $builder->orderBy('updated_at', 'DESC')->get()->getResultArray();
+
+        return view('absen/riwayat', [
+            'log' => $log,
+            'tanggal' => $tanggal
+        ]);
     }
 }

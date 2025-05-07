@@ -82,4 +82,6 @@ class Absen_model extends Model
             ->get()
             ->getResultArray();
     }
+
+
 }

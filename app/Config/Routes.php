@@ -53,5 +53,9 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->put('absensi/update', 'Absen::update');
         $routes->put('absensi/update/(:num)', 'Absen::update/$1');
         $routes->post('absensi/update', 'Absen::update'); // Fallback untuk form
+
+
+        $routes->get('riwayat', 'Absen::riwayat');
+
     });
 });
