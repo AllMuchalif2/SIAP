@@ -3,7 +3,7 @@
 
 <div class="container mt-4">
     <div class="card">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header text-white <?= ($summary->alpa ?? 0) > 10 ? 'bg-danger' : 'bg-primary'; ?>">
             <h5>Detail Absensi Siswa</h5>
         </div>
         <div class="card-body">
@@ -51,6 +51,14 @@
                         </table>
                     </div>
                 </div>
+
+                <?php if (($summary->alpa ?? 0) > 10): ?>
+                    <div class="card bg-danger text-center">
+                        <p> Siswa ini Alpa lebih dari 10 kali
+                        </p>
+                    </div>
+                <?php endif; ?>
+
 
                 <h5 class="mb-3">Riwayat Absensi</h5>
                 <div class="table-responsive">
