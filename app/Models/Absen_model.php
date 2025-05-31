@@ -8,23 +8,54 @@ class Absen_model extends Model
 {
     protected $table = 'absen';
     protected $primaryKey = 'id_absen';
-    protected $allowedFields = ['id_siswa', 'tanggal', 'keterangan', 'waktu'];
+    protected $allowedFields = ['id_siswa', 'tanggal', 'keterangan', 'waktu', 'waktu_pulang'];
+    protected $useTimestamps = false;
 
     public function insertAbsensi($data)
     {
         return $this->insert($data);
     }
 
-    public function absen($id_siswa, $tanggal)
+    public function absenMasuk($id_siswa, $tanggal)
     {
-        return $this->set('keterangan', 'Hadir')
-            ->set('waktu', date('H:i:s'))
-            ->where(['id_siswa' => $id_siswa, 'tanggal' => $tanggal])
-            ->update();
+        // Cek apakah sudah ada record untuk hari ini
+        $absenHariIni = $this->where(['id_siswa' => $id_siswa, 'tanggal' => $tanggal])->first();
+        
+        if (!$absenHariIni) {
+            // Jika belum ada, buat record baru
+            return $this->insert([
+                'id_siswa' => $id_siswa,
+                'tanggal' => $tanggal,
+                'keterangan' => 'Hadir',
+                'waktu' => date('H:i:s')
+            ]);
+        }
+        
+        return false;
     }
+
+    public function absenPulang($id_siswa, $tanggal)
+    {
+        // Cek apakah sudah ada absen masuk tapi belum pulang
+        $absenHariIni = $this->where('id_siswa', $id_siswa)
+                            ->where('tanggal', $tanggal)
+                            ->where('keterangan', 'Hadir')
+                            ->where('waktu_pulang IS NULL')
+                            ->first();
+
+        if ($absenHariIni) {
+            // Update waktu pulang
+            return $this->update($absenHariIni['id_absen'], [
+                'waktu_pulang' => date('H:i:s')
+            ]);
+        }
+
+        return false;
+    }
+
     public function getAbsensiByDate($tanggal)
     {
-        return $this->select('absen.id_siswa, siswa.nama, siswa.sekolah, absen.waktu')
+        return $this->select('absen.id_siswa, siswa.nama, siswa.sekolah, absen.waktu, absen.waktu_pulang')
             ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
             ->where('absen.tanggal', $tanggal)
             ->where('absen.keterangan', 'Hadir')
@@ -59,21 +90,15 @@ class Absen_model extends Model
             ->update();
     }
 
-    /**
-     * Ambil semua absensi untuk tanggal tertentu.
-     */
     public function getByTanggal($tanggal)
     {
-        return $this->select('absensi.*, siswa.nama, siswa.sekolah')
-            ->join('siswa', 'siswa.id = absensi.id_siswa')
+        return $this->select('absen.*, siswa.nama, siswa.sekolah')
+            ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
             ->where('tanggal', $tanggal)
             ->orderBy('siswa.nama', 'asc')
             ->findAll();
     }
 
-    /**
-     * Hitung jumlah per keterangan untuk tanggal tertentu.
-     */
     public function countKeterangan($tanggal)
     {
         return $this->select('keterangan, COUNT(*) as jumlah')
@@ -83,5 +108,24 @@ class Absen_model extends Model
             ->getResultArray();
     }
 
-
+    // Menghitung durasi kerja (opsional)
+    public function getDurasiKerja($id_siswa, $tanggal)
+    {
+        $absen = $this->where('id_siswa', $id_siswa)
+                     ->where('tanggal', $tanggal)
+                     ->first();
+        
+        if ($absen && $absen['waktu'] && $absen['waktu_pulang']) {
+            $masuk = strtotime($absen['waktu']);
+            $pulang = strtotime($absen['waktu_pulang']);
+            $diff = $pulang - $masuk;
+            
+            $jam = floor($diff / (60 * 60));
+            $menit = floor(($diff - ($jam * 60 * 60)) / 60);
+            
+            return $jam . ' jam ' . $menit . ' menit';
+        }
+        
+        return '-';
+    }
 }

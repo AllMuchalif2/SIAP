@@ -68,6 +68,8 @@
                                 <th>No</th>
                                 <th>Tanggal</th>
                                 <th>Keterangan</th>
+                                <th>Waktu Berangkat</th>
+                                <th>Waktu Pulang</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,12 +80,11 @@
                                         <td><?= $no++; ?></td>
                                         <td><?= date('d-m-Y', strtotime($row['tanggal'])); ?></td>
                                         <td><?= esc($row['keterangan']); ?></td>
+                                        <td><?= esc($row['waktu']); ?></td>
+                                        <td><?= esc($row['waktu_pulang']); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="3" class="text-center">Tidak ada data absensi</td>
-                                </tr>
+
                             <?php endif; ?>
                         </tbody>
                     </table>

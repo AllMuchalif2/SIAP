@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-
 use App\Models\Absen_model;
 use App\Models\Siswa_model;
 use App\Models\User_model;
@@ -16,24 +15,25 @@ class Absen extends Controller
     protected $session;
     protected $db;
 
-
     public function __construct()
     {
         $this->absensiModel = new Absen_model();
         $this->siswaModel = new Siswa_model();
+        $this->userModel = new User_model();
         $this->session = session();
         $this->db = \Config\Database::connect();
-        $this->session = session();
     }
 
     public function index()
     {
         return view('absen/input');
     }
+
     public function absensi()
     {
         $id_siswa = $this->request->getPost('id_siswa');
         $tanggal = date('Y-m-d');
+        $waktu_sekarang = date('H:i:s');
 
         $siswa = $this->siswaModel->find($id_siswa);
         if (!$siswa) {
@@ -46,21 +46,42 @@ class Absen extends Controller
         }
 
         $absensi = $this->absensiModel->where(['id_siswa' => $id_siswa, 'tanggal' => $tanggal])->first();
-        if ($absensi && $absensi['keterangan'] === 'Alpa') {
+        
+        if (!$absensi) {
+            // Jika belum ada record, buat baru dengan status Hadir
+            $data = [
+                'id_siswa' => $id_siswa,
+                'tanggal' => $tanggal,
+                'keterangan' => 'Hadir',
+                'waktu' => $waktu_sekarang
+            ];
+            $this->absensiModel->insert($data);
+            session()->setFlashdata('success', 'Absensi masuk berhasil <br><b>' . esc($siswa['nama']) . '</b>');
+        } 
+        elseif ($absensi['keterangan'] === 'Alpa') {
+            // Update dari Alpa ke Hadir
             $this->absensiModel->absen($id_siswa, $tanggal);
-            session()->setFlashdata('success', 'Absensi berhasil <br><b> ' . esc($siswa['nama']) . '</b>');
-        } else {
-            session()->setFlashdata('error', esc($siswa['nama']) . '<br> sudah absen untuk hari ini.');
+            session()->setFlashdata('success', 'Absensi berhasil <br><b>' . esc($siswa['nama']) . '</b>');
+        }
+        elseif ($absensi['keterangan'] === 'Hadir' && is_null($absensi['waktu_pulang'])) {
+            // Catat waktu pulang
+            $this->absensiModel
+                ->where('id_absen', $absensi['id_absen'])
+                ->set('waktu_pulang', $waktu_sekarang)
+                ->update();
+            session()->setFlashdata('success', 'Absensi pulang berhasil <br><b>' . esc($siswa['nama']) . '</b>');
+        }
+        else {
+            session()->setFlashdata('error', esc($siswa['nama']) . '<br> sudah melakukan absensi hari ini.');
         }
 
         return redirect()->to('/');
     }
 
-
-    // untuk dashboard
     public function dashboard()
     {
         $tanggal = date('Y-m-d');
+        
         $count_hadir = $this->absensiModel
             ->where('tanggal', $tanggal)
             ->where('keterangan', 'Hadir')
@@ -81,7 +102,14 @@ class Absen extends Controller
             ->where('keterangan', 'Alpa')
             ->countAllResults();
 
-        $absensi = $this->absensiModel->getAbsensiByDate($tanggal);
+        $absensi = $this->absensiModel
+            ->select('absen.id_siswa, siswa.nama, siswa.sekolah, absen.waktu, absen.waktu_pulang')
+            ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
+            ->where('absen.tanggal', $tanggal)
+            ->where('absen.keterangan', 'Hadir')
+            ->orderBy('absen.waktu', 'ASC')
+            ->findAll();
+
         return view('absen/dashboard', [
             'absensi' => $absensi,
             'count_hadir' => $count_hadir,
@@ -109,8 +137,9 @@ class Absen extends Controller
                 $data = [
                     'id_siswa' => $siswa['id_siswa'],
                     'tanggal' => $tanggal,
-                    'keterangan' => 'Alpa', // Default status
-                    'waktu' => null
+                    'keterangan' => 'Alpa',
+                    'waktu' => null,
+                    'waktu_pulang' => null
                 ];
 
                 try {
@@ -118,7 +147,7 @@ class Absen extends Controller
                     $successCount++;
                 } catch (\Exception $e) {
                     $errorCount++;
-                    log_message('error', 'gagal mengabsen: ' . $e->getMessage());
+                    log_message('error', 'Gagal mengabsen: ' . $e->getMessage());
                 }
             }
         }
@@ -135,6 +164,7 @@ class Absen extends Controller
     public function kehadiran()
     {
         $tanggal = $this->request->getGet('tanggal') ?? date('Y-m-d');
+        
         $count_hadir = $this->absensiModel
             ->where('tanggal', $tanggal)
             ->where('keterangan', 'Hadir')
@@ -156,9 +186,10 @@ class Absen extends Controller
             ->countAllResults();
 
         $kehadiran = $this->absensiModel
-            ->select('absen.id_siswa, siswa.nama, siswa.sekolah, absen.waktu , absen.keterangan')
+            ->select('absen.id_siswa, siswa.nama, siswa.sekolah, absen.waktu, absen.waktu_pulang, absen.keterangan')
             ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
             ->where('absen.tanggal', $tanggal)
+            ->orderBy('siswa.nama', 'ASC')
             ->findAll();
 
         return view('absen/index', [
@@ -166,15 +197,19 @@ class Absen extends Controller
             'count_hadir' => $count_hadir,
             'count_izin' => $count_izin,
             'count_sakit' => $count_sakit,
-            'count_alpa' => $count_alpa
+            'count_alpa' => $count_alpa,
+            'tanggal' => $tanggal
         ]);
     }
 
     public function update()
     {
-        $idSiswa     = $this->request->getPost('id');
-        $keterangan  = $this->request->getPost('keterangan');
-        $tanggal     = $this->request->getPost('tanggal');
+        $idSiswa = $this->request->getPost('id');
+        $keterangan = $this->request->getPost('keterangan');
+        $tanggal = $this->request->getPost('tanggal');
+        $waktu_masuk = $this->request->getPost('waktu_masuk');
+        $waktu_pulang = $this->request->getPost('waktu_pulang');
+        
         $absen = $this->db->table('absen')
             ->select('absen.*, siswa.nama')
             ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
@@ -183,52 +218,46 @@ class Absen extends Controller
             ->get()
             ->getRowArray();
 
-
-        $username    = session()->get('username'); // Ambil dari session
-
-        // // Ambil data absensi lama
-        // $absen = $this->absensiModel
-        //     ->where('id_siswa', $idSiswa)
-        //     ->where('tanggal', $tanggal)
-        //     ->first();
+        $username = session()->get('username');
 
         if (!$absen) {
             return redirect()->back()->with('error', 'Data absensi tidak ditemukan.');
-        }
+        } 
 
-        $waktuBaru = ($keterangan === 'Hadir') ? date('H:i:s') : null;
+        $dataUpdate = [
+            'keterangan' => $keterangan,
+            'waktu' => ($keterangan === 'Hadir') ? ($waktu_masuk ?: date('H:i:s')) : null,
+            'waktu_pulang' => ($keterangan === 'Hadir') ? $waktu_pulang : null
+        ];
 
         // Simpan update
         $this->absensiModel
             ->where('id_siswa', $idSiswa)
             ->where('tanggal', $tanggal)
-            ->set([
-                'keterangan' => $keterangan,
-                'waktu'      => $waktuBaru
-            ])
+            ->set($dataUpdate)
             ->update();
-        // dd($absen);
 
         // Simpan ke tabel log
-        $db = \Config\Database::connect();
-        $db->table('absensi_log')->insert([
-            'id_absen'         => $absen['id_absen'], // pastikan ada kolom 'id' di absensi
-            'id_siswa'         => $absen['id_siswa'],
-            'nama_siswa'       => $absen['nama'],
-            'keterangan_lama'  => $absen['keterangan'],
-            'keterangan_baru'  => $keterangan,
-            'waktu_lama'       => $absen['waktu'],
-            'waktu_baru'       => $waktuBaru,
-            'username'         => $username,
-            'updated_at'       => date('Y-m-d H:i:s')
+        $this->db->table('absensi_log')->insert([
+            'id_absen' => $absen['id_absen'],
+            'id_siswa' => $absen['id_siswa'],
+            'nama_siswa' => $absen['nama'],
+            'keterangan_lama' => $absen['keterangan'],
+            'keterangan_baru' => $keterangan,
+            'waktu_lama' => $absen['waktu'],
+            'waktu_baru' => $dataUpdate['waktu'],
+            'waktu_pulang_lama' => $absen['waktu_pulang'] ?? null,
+            'waktu_pulang_baru' => $dataUpdate['waktu_pulang'],
+            'username' => $username,
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
-        return redirect()->back()->with('success', 'Keterangan berhasil diupdate.');
+        return redirect()->back()->with('success', 'Data absensi berhasil diupdate.');
     }
 
     public function riwayat()
     {
-        $tanggal = $this->request->getGet('tanggal'); // filter opsional
+        $tanggal = $this->request->getGet('tanggal');
         $builder = $this->db->table('absensi_log');
 
         if ($tanggal) {
@@ -239,6 +268,37 @@ class Absen extends Controller
 
         return view('absen/riwayat', [
             'log' => $log,
+            'tanggal' => $tanggal
+        ]);
+    }
+
+    public function durasi()
+    {
+        $tanggal = $this->request->getGet('tanggal') ?? date('Y-m-d');
+        
+        $absensi = $this->absensiModel
+            ->select('absen.id_siswa, siswa.nama, absen.waktu, absen.waktu_pulang')
+            ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
+            ->where('absen.tanggal', $tanggal)
+            ->where('absen.keterangan', 'Hadir')
+            ->where('absen.waktu_pulang IS NOT NULL')
+            ->orderBy('siswa.nama', 'ASC')
+            ->findAll();
+
+        // Hitung durasi untuk setiap absensi
+        foreach ($absensi as &$absen) {
+            $masuk = strtotime($absen['waktu']);
+            $pulang = strtotime($absen['waktu_pulang']);
+            $diff = $pulang - $masuk;
+            
+            $jam = floor($diff / (60 * 60));
+            $menit = floor(($diff - ($jam * 60 * 60)) / 60);
+            
+            $absen['durasi'] = $jam . ' jam ' . $menit . ' menit';
+        }
+
+        return view('absen/durasi', [
+            'absensi' => $absensi,
             'tanggal' => $tanggal
         ]);
     }

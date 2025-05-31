@@ -47,7 +47,8 @@
                                 <th>NIS</th>
                                 <th>Nama</th>
                                 <th>Sekolah</th>
-                                <th>Waktu Absen</th>
+                                <th>Waktu Berangkat</th>
+                                <th>Waktu Pulang</th>
                                 <th>Keterangan</th>
                                 <th>Aksi</th>
                             </tr>
@@ -61,6 +62,7 @@
                                     <td><?= esc($item['nama']) ?></td>
                                     <td><?= esc($item['sekolah']) ?></td>
                                     <td><?= $item['waktu'] ? esc($item['waktu']) : '-' ?></td>
+                                    <td><?= $item['waktu_pulang'] ? esc($item['waktu_pulang']) : '-' ?></td>
                                     <td class="text-center">
                                         <span class="badge <?= $item['keterangan'] === 'Hadir' ? 'bg-success' : ($item['keterangan'] === 'Izin' ? 'bg-warning' : ($item['keterangan'] === 'Sakit' ? 'bg-danger' : 'bg-secondary')) ?>">
                                             <?= esc($item['keterangan']) ?>

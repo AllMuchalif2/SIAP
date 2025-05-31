@@ -40,10 +40,12 @@
                                 <th>Nama Siswa</th>
                                 <th>ID Siswa</th>
                                 <th>User</th>
-                                <th>Keterangan Lama</th>
-                                <th>Keterangan Baru</th>
-                                <th>Waktu Lama</th>
-                                <th>Waktu Baru</th>
+                                <th>Ket. Lama</th>
+                                <th>Ket. Baru</th>
+                                <th>Berangkat Lama</th>
+                                <th>Berangkat Baru</th>
+                                <th>Pulang Lama</th>
+                                <th>Pulang Baru</th>
                                 <th>Waktu Update</th>
                             </tr>
                         </thead>
@@ -59,13 +61,12 @@
                                         <td><span class="badge bg-info"><?= esc($row['keterangan_baru']) ?></span></td>
                                         <td><?= $row['waktu_lama'] ?: '-' ?></td>
                                         <td><?= $row['waktu_baru'] ?: '-' ?></td>
+                                        <td><?= $row['waktu_pulang_lama'] ?: '-' ?></td>
+                                        <td><?= $row['waktu_pulang_baru'] ?: '-' ?></td>
                                         <td><?= date('d-m-Y H:i:s', strtotime($row['updated_at'])) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="9" class="text-center">Belum ada data riwayat</td>
-                                </tr>
+
                             <?php endif; ?>
                         </tbody>
                     </table>

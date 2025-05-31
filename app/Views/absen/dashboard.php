@@ -163,7 +163,8 @@
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Sekolah</th>
-                                    <th>Waktu Absen</th>
+                                    <th>Waktu Berangkat</th>
+                                    <th>Waktu Pulang</th>
                                 </tr>
                             </thead>
 
@@ -176,12 +177,10 @@
                                             <td><?= esc($item['nama']); ?></td>
                                             <td><?= esc($item['sekolah']); ?></td>
                                             <td><?= esc($item['waktu']); ?></td>
+                                            <td><?= esc($item['waktu_pulang']); ?></td>
                                         </tr>
                                     <?php endforeach; ?>
-                                <?php else: ?>
-                                    <tr>
-                                        <td colspan="4" class="text-center">Tidak ada data absensi untuk hari ini.</td>
-                                    </tr>
+
                                 <?php endif; ?>
                             </tbody>
                         </table>
