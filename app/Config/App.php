@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8080/';
+    public string $baseURL = 'http://aku-absen.care/';
 
 
     /**
@@ -30,7 +30,7 @@ class App extends BaseConfig
      *
      * @var list<string>
      */
-    public array $allowedHostnames = ['aku_absen.care'];
+    public array $allowedHostnames = ['http://aku-absen.care/', 'localhost'];
 
     /**
      * --------------------------------------------------------------------------

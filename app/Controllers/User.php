@@ -46,12 +46,12 @@ class User extends BaseController
             return redirect()->back()->withInput()->with('error', $this->validator->getErrors());
         }
 
-        $password = password_hash($this->request->getPost('username'), PASSWORD_DEFAULT);
+        // $password = password_hash($this->request->getPost('username'), PASSWORD_DEFAULT);
 
         $data = [
             'name'     => $this->request->getPost('name'),
             'username' => $this->request->getPost('username'),
-            'password' => $password,
+            'password' => $this->request->getPost('username'),
             'role'     => $this->request->getPost('role')
         ];
 
@@ -108,6 +108,7 @@ class User extends BaseController
         $user = $this->userModel->where('id', $id)->first();
         if ($user) {
             $hash = $user['username'];
+            // dd($hash);
             $this->userModel->update($user['id'], ['password' => $hash]);
             return redirect()->to('/user')->with('success', 'Password berhasil direset');
         } else {
