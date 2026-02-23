@@ -6,10 +6,14 @@ use CodeIgniter\Model;
 
 class Siswa_model extends Model
 {
-
     protected $table = 'siswa';
     protected $primaryKey = 'id_siswa';
-    protected $fillable = ['nama', 'sekolah', 'status'];
+    protected $fillable = ['id_siswa', 'nama', 'sekolah', 'status'];
+    protected $allowedFields = ['id_siswa', 'nama', 'sekolah', 'status', 'deleted_at'];
+
+    // Soft Deletes
+    protected $useSoftDeletes = true;
+    protected $deletedField = 'deleted_at';
 
     public function getSiswaById($id)
     {
@@ -22,14 +26,16 @@ class Siswa_model extends Model
             $siswaList = $this->findAll();
             foreach ($siswaList as &$siswa) {
                 $siswa['attendance_percentage'] = $this->getPersenHadir($siswa['id_siswa']);
-                $siswa['total_absensi'] = $this->getTotalAbsensi($siswa['id_siswa']); // Menambahkan total absensi
+                $siswa['total_absensi'] = $this->getTotalAbsensi($siswa['id_siswa']);
+                $siswa['absen_count'] = $this->getAbsenCount($siswa['id_siswa']);
             }
             return $siswaList;
         } else {
             $siswa = $this->getWhere(['id_siswa' => $id])->getRowArray();
             if ($siswa) {
                 $siswa['attendance_percentage'] = $this->getPersenHadir($id);
-                $siswa['total_absensi'] = $this->getTotalAbsensi($id); // Menambahkan total absensi
+                $siswa['total_absensi'] = $this->getTotalAbsensi($id);
+                $siswa['absen_count'] = $this->getAbsenCount($id);
             }
             return $siswa;
         }
@@ -40,9 +46,31 @@ class Siswa_model extends Model
         $builder = $this->db->table('absen');
         $builder->select('COUNT(*) as total_absensi');
         $builder->where('id_siswa', $id_siswa);
+        $builder->where('deleted_at IS NULL');
         $result = $builder->get()->getRow();
 
-        return $result ? $result->total_absensi : 0; // Mengembalikan 0 jika tidak ada catatan
+        return $result ? $result->total_absensi : 0;
+    }
+
+    /**
+     * Cek apakah siswa memiliki data absen (aktif / belum soft delete)
+     */
+    public function hasAbsen($id_siswa): bool
+    {
+        return $this->getAbsenCount($id_siswa) > 0;
+    }
+
+    /**
+     * Hitung jumlah absen aktif milik siswa
+     */
+    public function getAbsenCount($id_siswa): int
+    {
+        $result = $this->db->table('absen')
+            ->where('id_siswa', $id_siswa)
+            ->where('deleted_at IS NULL')
+            ->countAllResults();
+
+        return (int) $result;
     }
 
     public function getPersenHadir($id_siswa)
@@ -53,19 +81,19 @@ class Siswa_model extends Model
         $builder->select('SUM(CASE WHEN keterangan = "Izin" THEN 1 ELSE 0 END) as izin');
         $builder->select('SUM(CASE WHEN keterangan = "Alpa" THEN 1 ELSE 0 END) as alpa');
         $builder->where('id_siswa', $id_siswa);
+        $builder->where('deleted_at IS NULL');
         $result = $builder->get()->getRow();
-
 
         if ($result) {
             $totalHadir = $result->hadir + $result->sakit + $result->izin;
             $totalRecords = $result->hadir + $result->sakit + $result->izin + $result->alpa;
 
             if ($totalRecords > 0) {
-                return ($totalHadir / $totalRecords) * 100; // Menghitung persentase kehadiran
+                return ($totalHadir / $totalRecords) * 100;
             }
         }
 
-        return 0; // Kembalikan 0 jika tidak ada catatan ditemukan atau totalRecords adalah 0
+        return 0;
     }
 
     public function insertSiswa($data)
@@ -78,8 +106,11 @@ class Siswa_model extends Model
         return $this->db->table($this->table)->update($data, ['id_siswa' => $id]);
     }
 
+    /**
+     * Soft delete siswa (deleted_at diisi timestamp)
+     */
     public function deleteSiswa($id)
     {
-        return $this->db->table($this->table)->delete(['id_siswa' => $id]);
+        return $this->delete($id);
     }
 }

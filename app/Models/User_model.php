@@ -8,9 +8,13 @@ class User_model extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['username','name', 'password', 'role'];
+    protected $allowedFields = ['username', 'name', 'password', 'role', 'deleted_at'];
     protected $beforeInsert = ['hashPassword'];
     protected $beforeUpdate = ['hashPassword'];
+
+    // Soft Deletes
+    protected $useSoftDeletes = true;
+    protected $deletedField = 'deleted_at';
 
     protected function hashPassword(array $data)
     {
@@ -24,6 +28,7 @@ class User_model extends Model
     {
         return $this->where('username', $username)->first();
     }
+
     public function isAdmin($userId)
     {
         $user = $this->find($userId);

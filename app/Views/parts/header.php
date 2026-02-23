@@ -44,6 +44,9 @@ switch ($route) {
     <link rel="stylesheet" href="<?= base_url('assets/compiled/css/iconly.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/extensions/@fortawesome/fontawesome-free/css/all.min.css') ?>">
 
+    <link rel="stylesheet" href="<?= base_url('assets/extensions/sweetalert2/sweetalert2.min.css') ?>">
+
+
 
 
 </head>

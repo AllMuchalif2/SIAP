@@ -7,14 +7,14 @@
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Data Absensi</h3>
             </div>
-            <!-- <div class="col-12 col-md-6 order-md-2 order-first">
+            <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Absensi</li>
                     </ol>
                 </nav>
-            </div> -->
+            </div>
         </div>
     </div>
 
@@ -64,18 +64,15 @@
                                     <td><?= $item['waktu'] ? esc($item['waktu']) : '-' ?></td>
                                     <td><?= $item['waktu_pulang'] ? esc($item['waktu_pulang']) : '-' ?></td>
                                     <td class="text-center">
-                                        <span class="badge <?= $item['keterangan'] === 'Hadir' ? 'bg-success' : ($item['keterangan'] === 'Izin' ? 'bg-warning' : ($item['keterangan'] === 'Sakit' ? 'bg-danger' : 'bg-secondary')) ?>">
+                                        <span
+                                            class="badge <?= $item['keterangan'] === 'Hadir' ? 'bg-success' : ($item['keterangan'] === 'Izin' ? 'bg-warning' : ($item['keterangan'] === 'Sakit' ? 'bg-danger' : 'bg-secondary')) ?>">
                                             <?= esc($item['keterangan']) ?>
                                         </span>
                                     </td>
                                     <td class="text-center">
-                                        <button type="button"
-                                            class="btn btn-sm btn-primary"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#editModal"
-                                            data-id="<?= $item['id_siswa'] ?>"
-                                            data-nama="<?= esc($item['nama']) ?>"
-                                            data-tanggal="<?= esc($tanggal) ?>"
+                                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#editModal" data-id="<?= $item['id_siswa'] ?>"
+                                            data-nama="<?= esc($item['nama']) ?>" data-tanggal="<?= esc($tanggal) ?>"
                                             data-keterangan="<?= esc($item['keterangan']) ?>">
                                             <i class="bi bi-pencil"></i> Ubah
                                         </button>
@@ -94,67 +91,67 @@
 
 <!-- Modal Edit Absensi -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form method="POST" action="<?= base_url('absensi/update') ?>" id="formEditAbsensi">
-        <?= csrf_field() ?>
-        <input type="hidden" name="id" id="edit_id">
-        <input type="hidden" name="tanggal" id="edit_tanggal">
+    <div class="modal-dialog">
+        <form method="POST" action="<?= base_url('absensi/update') ?>" id="formEditAbsensi">
+            <?= csrf_field() ?>
+            <input type="hidden" name="id" id="edit_id">
+            <input type="hidden" name="tanggal" id="edit_tanggal">
 
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="editModalLabel">Ubah Keterangan Absensi</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label class="form-label">Nama Siswa</label>
-              <input type="text" class="form-control" id="edit_nama" readonly>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Ubah Keterangan Absensi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nama Siswa</label>
+                        <input type="text" class="form-control" id="edit_nama" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tanggal</label>
+                        <input type="date" class="form-control" id="edit_tanggal" value="<?= esc($tanggal) ?>" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Keterangan</label>
+                        <select class="form-select" name="keterangan" id="edit_keterangan" required>
+                            <option value="Hadir">Hadir</option>
+                            <option value="Izin">Izin</option>
+                            <option value="Sakit">Sakit</option>
+                            <option value="Alpa">Alpa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i> Simpan Perubahan
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle"></i> Batal
+                    </button>
+                </div>
             </div>
-            <div class="mb-3">
-              <label class="form-label">Tanggal</label>
-              <input type="date" class="form-control" id="edit_tanggal" value="<?= esc($tanggal) ?>" readonly>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Keterangan</label>
-              <select class="form-select" name="keterangan" id="edit_keterangan" required>
-                <option value="Hadir">Hadir</option>
-                <option value="Izin">Izin</option>
-                <option value="Sakit">Sakit</option>
-                <option value="Alpa">Alpa</option>
-              </select>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success">
-              <i class="bi bi-check-circle"></i> Simpan Perubahan
-            </button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              <i class="bi bi-x-circle"></i> Batal
-            </button>
-          </div>
-        </div>
-    </form>
-  </div>
+        </form>
+    </div>
 </div>
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const editModal = document.getElementById('editModal');
-    editModal.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget;
+    document.addEventListener('DOMContentLoaded', function () {
+        const editModal = document.getElementById('editModal');
+        editModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
 
-        const id = button.getAttribute('data-id');
-        const nama = button.getAttribute('data-nama');
-        const tanggal = button.getAttribute('data-tanggal');
-        const keterangan = button.getAttribute('data-keterangan');
+            const id = button.getAttribute('data-id');
+            const nama = button.getAttribute('data-nama');
+            const tanggal = button.getAttribute('data-tanggal');
+            const keterangan = button.getAttribute('data-keterangan');
 
-        document.getElementById('edit_id').value = id;
-        document.getElementById('edit_tanggal').value = tanggal;
-        document.getElementById('edit_nama').value = nama;
-        document.getElementById('edit_keterangan').value = keterangan;
+            document.getElementById('edit_id').value = id;
+            document.getElementById('edit_tanggal').value = tanggal;
+            document.getElementById('edit_nama').value = nama;
+            document.getElementById('edit_keterangan').value = keterangan;
+        });
     });
-});
 </script>
 
 

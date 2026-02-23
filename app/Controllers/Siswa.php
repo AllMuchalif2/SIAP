@@ -85,26 +85,57 @@ class Siswa extends Controller
 
     public function delete($id)
     {
-        $hapus = $this->siswaModel->deleteSiswa($id);
-        if ($hapus) {
-            session()->setFlashdata('warning', 'berhasil menghapus data');
-            return redirect()->to('/siswa');
-        } else {
-            session()->setFlashdata('error', 'gagal menghapus data');
+        $siswa = $this->siswaModel->getSiswaById($id);
+
+        if (!$siswa) {
+            session()->setFlashdata('error', 'Data siswa tidak ditemukan');
             return redirect()->to('/siswa');
         }
+
+        $force = $this->request->getGet('force');
+        $absenCount = $this->siswaModel->getAbsenCount($id);
+
+        // Jika siswa punya absen dan belum diminta force
+        if ($absenCount > 0 && $force !== '1') {
+            // Kembalikan JSON agar JS bisa tampilkan modal peringatan
+            return $this->response
+                ->setContentType('application/json')
+                ->setJSON([
+                    'has_absen' => true,
+                    'absen_count' => $absenCount,
+                    'nama' => $siswa['nama'],
+                    'force_url' => base_url('siswa/delete/' . $id . '?force=1'),
+                ]);
+        }
+
+        // Cascade soft delete absen dulu (jika ada)
+        if ($absenCount > 0) {
+            $this->absenModel->softDeleteBySiswa($id);
+        }
+
+        // Soft delete siswa
+        $hapus = $this->siswaModel->deleteSiswa($id);
+
+        if ($hapus) {
+            session()->setFlashdata('success', 'Data siswa berhasil dihapus' . ($absenCount > 0 ? " beserta {$absenCount} data absensi" : ''));
+        } else {
+            session()->setFlashdata('error', 'Gagal menghapus data siswa');
+        }
+
+        return redirect()->to('/siswa');
     }
+
 
     public function absensi($id_siswa)
     {
         $siswa = $this->siswaModel->getSiswa($id_siswa);
         $absensi = $this->absenModel->getAbsenBySiswa($id_siswa);
-        $summary = $this->absenModel->getAbsenSummary($id_siswa); 
+        $summary = $this->absenModel->getAbsenSummary($id_siswa);
 
         $data = [
             'siswa' => $siswa,
             'absensi' => $absensi,
-            'summary' => $summary 
+            'summary' => $summary
         ];
 
         return view('siswa/absensi', $data);

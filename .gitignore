@@ -1,0 +1,15 @@
+# Composer
+/vendor/
+
+# Writable (logs, cache, session, uploads)
+/writable/*
+!/writable/.gitkeep
+
+# Environment
+# .env
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

@@ -11,23 +11,26 @@
 
 
 
-<script src="./assets/static/js/components/dark.js"></script>
-<script src="./assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="./assets/compiled/js/app.js"></script>
+<script src="<?= base_url('assets/static/js/components/dark.js') ?>"></script>
+<script src="<?= base_url('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js') ?>"></script>
+<script src="<?= base_url('assets/compiled/js/app.js') ?>"></script>
 
 
 
 <!-- Need: Apexcharts -->
-<script src="./assets/extensions/apexcharts/apexcharts.min.js"></script>
-<script src="./assets/static/js/pages/dashboard.js"></script>
-<script src="./assets/extensions/jquery/jquery.min.js"></script>
+<script src="<?= base_url('assets/extensions/apexcharts/apexcharts.min.js') ?>"></script>
+<script src="<?= base_url('assets/static/js/pages/dashboard.js') ?>"></script>
+<script src="<?= base_url('assets/extensions/jquery/jquery.min.js') ?>"></script>
 
 <!-- datatables -->
-<script src="./assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-<script src="./assets/static/js/pages/simple-datatables.js"></script>
+<script src="<?= base_url('assets/extensions/simple-datatables/umd/simple-datatables.js') ?>"></script>
+<script src="<?= base_url('assets/static/js/pages/simple-datatables.js') ?>"></script>
+
+<!-- SweetAlert2 -->
+<script src="<?= base_url('assets/extensions/sweetalert2/sweetalert2.all.min.js') ?>"></script>
 
 <script>
-    setTimeout(function() {
+    setTimeout(function () {
         let alert = document.querySelector('.alert');
         if (alert) {
             alert.classList.add('fade');
@@ -35,8 +38,39 @@
         }
     }, 3000);
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    // Global SweetAlert2 confirm untuk link dengan class swal-confirm
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.swal-confirm').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                const title = this.dataset.title || 'Apakah Anda yakin?';
+                const text = this.dataset.text || 'Tindakan ini tidak dapat dibatalkan.';
+                const icon = this.dataset.icon || 'warning';
+                const confirmText = this.dataset.confirm || 'Ya, lanjutkan!';
+                const confirmColor = this.dataset.color || '#d33';
+
+                Swal.fire({
+                    title: title,
+                    text: text,
+                    icon: icon,
+                    showCancelButton: true,
+                    confirmButtonColor: confirmColor,
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: confirmText,
+                    cancelButtonText: 'Batal',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = href;
+                    }
+                });
+            });
+        });
     });
 </script>
 

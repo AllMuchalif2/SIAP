@@ -72,7 +72,8 @@
                             <div class="row">
                                 <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                                     <div class="stats-icon green mb-2">
-                                        <i class="bi bi-clipboard2-pulse-fill" style="font-size: 2rem; color: #28a745;"></i>
+                                        <i class="bi bi-clipboard2-pulse-fill"
+                                            style="font-size: 2rem; color: #28a745;"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
@@ -123,13 +124,13 @@
                         <h5 class="font-bold"><?= $hari[$hariIni] ?></h5>
                         <h6 class="text-muted"><?= date('d') . ' ' . $bulan[$bulanIni] . ' ' . date('Y') ?></h6>
 
-                        <?php if (session('role') === 'admin') : ?>
-                            <form action="<?= base_url('input') ?>" method="post">
-                                <?= csrf_field() ?>
-                                <button type="submit" class="btn btn-primary btn-block">
-                                    <i class="bi bi-plus-circle"></i> Input Absensi Hari Ini
-                                </button>
-                            </form>
+                        <?php if (session('role') === 'admin'): ?>
+                                <form action="<?= base_url('input') ?>" method="post">
+                                    <?= csrf_field() ?>
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        <i class="bi bi-plus-circle"></i> Input Absensi Hari Ini
+                                    </button>
+                                </form>
                         <?php endif; ?>
 
                     </div>
@@ -141,10 +142,10 @@
 
 
         <div class="col-12">
-            <?php if (session()->getFlashdata('success')) : ?>
-                <div class="alert alert-success">
-                    <?= session()->getFlashdata('success') ?>
-                </div>
+            <?php if (session()->getFlashdata('success')): ?>
+                    <div class="alert alert-success">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
             <?php endif; ?>
         </div>
 
@@ -170,16 +171,16 @@
 
                             <tbody>
                                 <?php if (!empty($absensi)): ?>
-                                    <?php $no = 1; ?>
-                                    <?php foreach ($absensi as $item): ?>
-                                        <tr>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= esc($item['nama']); ?></td>
-                                            <td><?= esc($item['sekolah']); ?></td>
-                                            <td><?= esc($item['waktu']); ?></td>
-                                            <td><?= esc($item['waktu_pulang']); ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                        <?php $no = 1; ?>
+                                        <?php foreach ($absensi as $item): ?>
+                                                <tr>
+                                                    <td><?= $no++; ?></td>
+                                                    <td><?= esc($item['nama']); ?></td>
+                                                    <td><?= esc($item['sekolah']); ?></td>
+                                                    <td><?= esc($item['waktu']); ?></td>
+                                                    <td><?= esc($item['waktu_pulang']); ?></td>
+                                                </tr>
+                                        <?php endforeach; ?>
 
                                 <?php endif; ?>
                             </tbody>
@@ -194,15 +195,26 @@
 </div>
 
 <script>
-    document.querySelector('form[action="<?= base_url('input') ?>"]').addEventListener('submit', function(e) {
-        if (!confirm('Yakin ingin menginput absensi untuk semua siswa hari ini?')) {
-            e.preventDefault();
-        }
+    document.querySelector('form[action="<?= base_url('input') ?>"]').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const form = this;
+        Swal.fire({
+            title: 'Input Absensi Hari Ini',
+            text: 'Yakin ingin menginput absensi untuk semua siswa hari ini?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#0d6efd',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, Input Sekarang!',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
     });
 </script>
-
-
-
 
 
 <?= view('parts/footer'); ?>
