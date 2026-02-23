@@ -41,9 +41,14 @@ class Absen extends Controller
 
     public function absensi()
     {
-        $id_siswa = $this->request->getPost('id_siswa');
+        $id_siswa = $this->normalizeScannedId($this->request->getPost('id_siswa'));
         $tanggal = date('Y-m-d');
         $waktu_sekarang = date('H:i:s');
+
+        if ($id_siswa === '') {
+            session()->setFlashdata('error', 'ID siswa tidak valid dari hasil scan.');
+            return redirect()->to('/');
+        }
 
         $siswa = $this->siswaModel->find($id_siswa);
         if (!$siswa) {
@@ -83,6 +88,58 @@ class Absen extends Controller
         }
 
         return redirect()->to('/');
+    }
+
+    private function normalizeScannedId(?string $raw): string
+    {
+        $text = trim((string) ($raw ?? ''));
+        $text = preg_replace('/[\x{200B}\x{200C}\x{200D}\x{FEFF}]/u', '', $text) ?? '';
+
+        if ($text === '') {
+            return '';
+        }
+
+        if (preg_match('/(?:^|\s)ABSEN\s*:\s*([^\s]+)/i', $text, $matches) === 1) {
+            return $this->sanitizeScannedId($matches[1]);
+        }
+
+        if (preg_match('/^https?:\/\//i', $text) === 1) {
+            $parts = parse_url($text);
+            if (isset($parts['query'])) {
+                parse_str($parts['query'], $query);
+                foreach (['id_siswa', 'id', 'siswa'] as $key) {
+                    if (!empty($query[$key])) {
+                        return $this->sanitizeScannedId((string) $query[$key]);
+                    }
+                }
+            }
+
+            if (!empty($parts['path'])) {
+                $segments = array_values(array_filter(explode('/', $parts['path'])));
+                if (!empty($segments)) {
+                    return $this->sanitizeScannedId((string) end($segments));
+                }
+            }
+        }
+
+        $firstLine = explode("\n", str_replace("\r", "", $text))[0] ?? $text;
+        return $this->sanitizeScannedId($firstLine);
+    }
+
+    private function sanitizeScannedId(string $value): string
+    {
+        $value = trim($value);
+        $value = preg_replace('/[\x{200B}\x{200C}\x{200D}\x{FEFF}]/u', '', $value) ?? '';
+
+        if ($value === '') {
+            return '';
+        }
+
+        if (preg_match('/[A-Za-z0-9._\/-]{1,20}/', $value, $match) === 1) {
+            return $match[0];
+        }
+
+        return '';
     }
 
     public function dashboard()

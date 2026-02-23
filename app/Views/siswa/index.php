@@ -88,6 +88,12 @@
                                                 class="btn btn-sm btn-primary" data-toggle="tooltip" title="Lihat">
                                                 <i class="fa fa-calendar-check"></i>
                                             </a>
+                                            <!-- Tombol QR Code -->
+                                            <button type="button" class="btn btn-sm btn-secondary btn-show-qr"
+                                                data-id="<?= esc($row['id_siswa']) ?>" data-nama="<?= esc($row['nama']) ?>"
+                                                data-toggle="tooltip" title="QR Code">
+                                                <i class="bi bi-qr-code"></i>
+                                            </button>
                                             <?php if (session('role') === 'admin'): ?>
                                                 <a href="<?= base_url('siswa/edit/' . esc($row['id_siswa'])); ?>"
                                                     class="btn btn-sm btn-success" data-toggle="tooltip" title="Edit">
@@ -174,6 +180,81 @@
                     }
                 });
             });
+        });
+    </script>
+
+    <!-- Modal QR Code -->
+    <div class="modal fade" id="modalQR" tabindex="-1" aria-labelledby="modalQRLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-3 border-0 shadow-sm">
+                <div class="modal-header pb-2">
+                    <h6 class="modal-title fw-semibold" id="modalQRLabel">
+                        <i class="bi bi-qr-code me-2"></i>QR Siswa: <span id="qrNamaSiswa" class="ms-1"></span>
+                    </h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center pt-2 pb-3">
+                    <div class="bg-light rounded-3 p-3 d-flex justify-content-center">
+                        <div id="qrCodeDisplay" class="d-inline-block bg-white p-2 rounded border"></div>
+                    </div>
+                    <p class="text-muted small mt-3 mb-0" id="qrIdSiswa"></p>
+                </div>
+                <div class="modal-footer pt-0 justify-content-center border-0">
+                    <a id="btnDownloadQR" href="#" download class="btn btn-primary">
+                        <i class="bi bi-download me-1"></i> Download QR
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- qrcode.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script>
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('.btn-show-qr');
+            if (!btn) return;
+
+            const id = btn.dataset.id;
+            const nama = btn.dataset.nama;
+
+            document.getElementById('qrNamaSiswa').textContent = nama;
+            document.getElementById('qrIdSiswa').textContent = 'ID: ' + id;
+
+            const container = document.getElementById('qrCodeDisplay');
+            container.innerHTML = '';
+
+            const qrPayload = 'ABSEN:' + String(id).trim();
+
+            const qr = new QRCode(container, {
+                text: qrPayload,
+                width: 280,
+                height: 280,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Tunggu QR selesai render lalu set link download
+            setTimeout(function () {
+                const canvas = container.querySelector('canvas');
+                if (canvas) {
+                    const padded = document.createElement('canvas');
+                    const pad = 24;
+                    padded.width = canvas.width + (pad * 2);
+                    padded.height = canvas.height + (pad * 2);
+                    const ctx = padded.getContext('2d');
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, padded.width, padded.height);
+                    ctx.drawImage(canvas, pad, pad);
+
+                    const link = document.getElementById('btnDownloadQR');
+                    link.href = padded.toDataURL('image/png');
+                    link.download = 'QR-' + nama.replace(/\s+/g, '_') + '.png';
+                }
+            }, 100);
+
+            new bootstrap.Modal(document.getElementById('modalQR')).show();
         });
     </script>
 

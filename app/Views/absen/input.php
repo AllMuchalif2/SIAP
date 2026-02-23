@@ -55,7 +55,8 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
 
                     <!-- Tanggal & Jam -->
                     <p class="text-muted mb-1 small"><?= $namaHari ?>,
-                        <?= date('d') . ' ' . $namaBulan . ' ' . date('Y') ?></p>
+                        <?= date('d') . ' ' . $namaBulan . ' ' . date('Y') ?>
+                    </p>
                     <h2 class="fw-bold mb-3" id="liveClock">00:00:00</h2>
 
                     <!-- Toggle tema -->
@@ -72,10 +73,24 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
                         <?= csrf_field() ?>
                         <input type="text" name="id_siswa" id="id_siswa" class="form-control text-center mb-2"
                             placeholder="Masukkan ID Siswa" autocomplete="off" required autofocus>
-                        <button type="submit" class="btn btn-primary w-100">
+                        <button type="submit" class="btn btn-primary w-100 mb-2">
                             <i class="bi bi-box-arrow-in-right me-1"></i> Absen
                         </button>
                     </form>
+
+                    <!-- Tombol Scan QR -->
+                    <button class="btn btn-outline-secondary w-100" id="btnToggleScan">
+                        <i class="bi bi-qr-code-scan me-1"></i> Scan QR Code
+                    </button>
+                    <div id="qrScanArea" class="mt-3" style="display:none;">
+                        <div class="mb-2" id="cameraChooserWrap" style="display:none;">
+                            <select id="cameraChooser" class="form-select form-select-sm"></select>
+                        </div>
+                        <div id="qrReader" style="width:100%; border-radius: 8px; overflow: hidden; background: #eee;">
+                        </div>
+                        <p id="scanStatus" class="text-muted small mt-2 mb-0 text-center">Arahkan kamera ke QR Code
+                            siswa</p>
+                    </div>
 
                     <!-- Mini stat -->
                     <div class="row g-2 mt-3 text-center">
@@ -197,17 +212,300 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
     (function () {
         const t = document.getElementById('toggle-dark');
         if (!t) return;
-        if (localStorage.getItem('theme') === 'dark') { document.documentElement.setAttribute('data-bs-theme', 'dark'); t.checked = true; }
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+            t.checked = true;
+        }
         t.addEventListener('change', function () {
-            if (this.checked) { document.documentElement.setAttribute('data-bs-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
-            else { document.documentElement.removeAttribute('data-bs-theme'); localStorage.setItem('theme', 'light'); }
+            if (this.checked) {
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-bs-theme');
+                localStorage.setItem('theme', 'light');
+            }
         });
     })();
 
-    // Clear setelah submit
+    // Clear & refocus setelah submit
     document.getElementById('formAbsen').addEventListener('submit', function () {
-        setTimeout(() => { const i = document.getElementById('id_siswa'); i.value = ''; i.focus(); }, 200);
+        setTimeout(() => {
+            const i = document.getElementById('id_siswa');
+            i.value = '';
+            i.focus();
+        }, 200);
     });
+</script>
+
+<!-- html5-qrcode CDN -->
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script>
+    let html5QrCode = null;
+    let availableCameras = [];
+    let selectedCameraId = null;
+    let scanFailCount = 0;
+    let hasTriedCompatMode = false;
+    let scannerMode = 'standard';
+    let fallbackTimer = null;
+    let hasSubmittedFromScan = false;
+    let fallbackCanvas = null;
+    let fallbackCtx = null;
+    const btnToggle = document.getElementById('btnToggleScan');
+    const scanArea = document.getElementById('qrScanArea');
+    const qrReader = document.getElementById('qrReader');
+    const scanStatus = document.getElementById('scanStatus');
+    const cameraChooserWrap = document.getElementById('cameraChooserWrap');
+    const cameraChooser = document.getElementById('cameraChooser');
+
+    function pickBestCamera(cameras) {
+        if (!cameras || !cameras.length) return null;
+        const backCam = cameras.find(c => /rear|back|environment|belakang/i.test(c.label || ''));
+        return (backCam || cameras[0]).id;
+    }
+
+    async function loadCameras() {
+        availableCameras = await Html5Qrcode.getCameras();
+        if (!availableCameras.length) throw new Error('Kamera tidak ditemukan');
+
+        selectedCameraId = selectedCameraId || pickBestCamera(availableCameras);
+
+        if (cameraChooser) {
+            cameraChooser.innerHTML = availableCameras
+                .map((cam, idx) => {
+                    const label = cam.label || `Kamera ${idx + 1}`;
+                    const selected = cam.id === selectedCameraId ? 'selected' : '';
+                    return `<option value="${cam.id}" ${selected}>${label}</option>`;
+                })
+                .join('');
+        }
+        if (cameraChooserWrap) cameraChooserWrap.style.display = availableCameras.length > 1 ? 'block' : 'none';
+    }
+
+    async function restartScannerWith(cameraId) {
+        selectedCameraId = cameraId;
+        if (html5QrCode && html5QrCode.isScanning) {
+            try {
+                await html5QrCode.stop();
+            } catch (e) {
+                console.warn('Stop before restart failed:', e);
+            }
+        }
+        await mulaiScanner();
+    }
+
+    function startJsQrFallback() {
+        stopJsQrFallback();
+        fallbackCanvas = document.createElement('canvas');
+        fallbackCtx = fallbackCanvas.getContext('2d', { willReadFrequently: true });
+
+        fallbackTimer = setInterval(() => {
+            if (hasSubmittedFromScan) return;
+            if (!scanArea || scanArea.style.display === 'none') return;
+
+            const video = qrReader.querySelector('video');
+            if (!video || video.readyState < 2) return;
+
+            const width = video.videoWidth || 0;
+            const height = video.videoHeight || 0;
+            if (!width || !height) return;
+
+            fallbackCanvas.width = width;
+            fallbackCanvas.height = height;
+            fallbackCtx.drawImage(video, 0, 0, width, height);
+
+            const imageData = fallbackCtx.getImageData(0, 0, width, height);
+            const result = jsQR(imageData.data, width, height, {
+                inversionAttempts: 'attemptBoth'
+            });
+
+            if (result && result.data) {
+                console.log('QR detected by jsQR fallback:', result.data);
+                onScanSuccess(result.data);
+            }
+        }, 220);
+    }
+
+    function stopJsQrFallback() {
+        if (fallbackTimer) {
+            clearInterval(fallbackTimer);
+            fallbackTimer = null;
+        }
+        fallbackCanvas = null;
+        fallbackCtx = null;
+    }
+
+    if (cameraChooser) {
+        cameraChooser.addEventListener('change', async function () {
+            if (!this.value) return;
+            if (scanStatus) scanStatus.textContent = 'Mengganti kamera...';
+            try {
+                await restartScannerWith(this.value);
+            } catch (err) {
+                console.error('Gagal mengganti kamera:', err);
+                if (scanStatus) scanStatus.textContent = 'Gagal mengganti kamera.';
+            }
+        });
+    }
+
+    btnToggle.addEventListener('click', function () {
+        console.log("Scanner toggle clicked");
+        if (!html5QrCode || !html5QrCode.isScanning) {
+            scanArea.style.display = 'block';
+            btnToggle.innerHTML = '<i class="bi bi-x-circle me-1"></i> Tutup Scanner';
+            btnToggle.classList.replace('btn-outline-secondary', 'btn-outline-danger');
+            if (scanStatus) scanStatus.textContent = 'Menyalakan kamera...';
+
+            mulaiScanner();
+        } else {
+            stopScanner();
+        }
+    });
+
+    async function mulaiScanner() {
+        console.log("Starting scanner...");
+        try {
+            if (!html5QrCode) {
+                html5QrCode = new Html5Qrcode("qrReader");
+            }
+            if (!availableCameras.length) {
+                await loadCameras();
+            }
+
+            const config = scannerMode === 'standard'
+                ? {
+                    fps: 10,
+                    rememberLastUsedCamera: true,
+                    disableFlip: false
+                }
+                : {
+                    fps: 6,
+                    qrbox: { width: 280, height: 280 },
+                    rememberLastUsedCamera: true,
+                    disableFlip: true
+                };
+
+            scanFailCount = 0;
+            const cameraIdToUse = selectedCameraId || pickBestCamera(availableCameras);
+            await html5QrCode.start(
+                cameraIdToUse,
+                config,
+                onScanSuccess,
+                onScanFailure
+            );
+            startJsQrFallback();
+            console.log("Scanner started with cameraId:", cameraIdToUse);
+            if (scanStatus) {
+                scanStatus.textContent = scannerMode === 'standard'
+                    ? 'Scanner aktif. Arahkan QR ke dalam frame.'
+                    : 'Mode kompatibilitas aktif. Arahkan QR ke dalam frame.';
+            }
+        } catch (err) {
+            console.error("Scanner failed to start:", err);
+            alert("Gagal mengakses kamera. Pastikan izin kamera diaktifkan dan gunakan HTTPS/localhost.");
+            if (scanStatus) scanStatus.textContent = 'Gagal mengakses kamera.';
+            stopScanner();
+        }
+    }
+
+    function onScanSuccess(decodedText) {
+        if (hasSubmittedFromScan) return;
+        console.log("QR Code detected:", decodedText);
+        const parsedId = extractSiswaId(decodedText);
+        if (!parsedId) {
+            if (scanStatus) scanStatus.textContent = 'QR terbaca tapi format ID tidak valid.';
+            return;
+        }
+        hasSubmittedFromScan = true;
+        document.getElementById('id_siswa').value = parsedId;
+        if (scanStatus) scanStatus.textContent = 'QR terdeteksi, mengirim absensi...';
+        stopScanner();
+        document.getElementById('formAbsen').submit();
+    }
+
+    function extractSiswaId(rawText) {
+        const text = normalizeRawQrText(rawText);
+        if (!text) return '';
+
+        const prefixedMatch = text.match(/(?:^|\s)ABSEN\s*:\s*([^\s]+)/i);
+        if (prefixedMatch && prefixedMatch[1]) {
+            return sanitizeId(prefixedMatch[1]);
+        }
+
+        if (/^https?:\/\//i.test(text)) {
+            try {
+                const url = new URL(text);
+                const params = url.searchParams;
+                const idFromUrl = params.get('id_siswa') || params.get('id') || params.get('siswa');
+                if (idFromUrl) return sanitizeId(idFromUrl);
+                const lastPath = (url.pathname || '').split('/').filter(Boolean).pop() || '';
+                if (lastPath) return sanitizeId(lastPath);
+            } catch (e) {
+                console.warn('QR URL parse gagal:', e);
+            }
+        }
+
+        const firstLine = text.split(/\r?\n/)[0] || text;
+        return sanitizeId(firstLine);
+    }
+
+    function normalizeRawQrText(value) {
+        return String(value || '')
+            .replace(/\u200B|\u200C|\u200D|\uFEFF/g, '')
+            .trim();
+    }
+
+    function sanitizeId(value) {
+        const cleaned = normalizeRawQrText(value);
+        if (!cleaned) return '';
+        const match = cleaned.match(/[A-Za-z0-9._\/-]{1,20}/);
+        if (!match) return '';
+        return match[0];
+    }
+
+    function onScanFailure(errorMessage) {
+        scanFailCount++;
+
+        if (!hasTriedCompatMode && scannerMode === 'standard' && scanFailCount >= 120) {
+            hasTriedCompatMode = true;
+            scannerMode = 'compat';
+            if (scanStatus) scanStatus.textContent = 'QR sulit dibaca, beralih ke mode kompatibilitas...';
+            restartScannerWith(selectedCameraId).catch(err => {
+                console.error('Gagal masuk mode kompatibilitas:', err);
+            });
+            return;
+        }
+
+        if (scanStatus && scanFailCount % 20 === 0) {
+            scanStatus.textContent = 'Mencoba membaca QR...';
+        }
+        if (scanFailCount % 50 === 0 && errorMessage) {
+            console.debug('Scan failure info:', errorMessage);
+        }
+    }
+
+    async function stopScanner() {
+        console.log("Stopping scanner...");
+        stopJsQrFallback();
+        if (html5QrCode && html5QrCode.isScanning) {
+            try {
+                await html5QrCode.stop();
+                console.log("Scanner stopped.");
+            } catch (err) {
+                console.warn("Failed to stop scanner cleanly:", err);
+            }
+        }
+        scanArea.style.display = 'none';
+        btnToggle.innerHTML = '<i class="bi bi-qr-code-scan me-1"></i> Scan QR Code';
+        btnToggle.classList.replace('btn-outline-danger', 'btn-outline-secondary');
+        if (scanStatus) scanStatus.textContent = 'Arahkan kamera ke QR Code siswa';
+        if (cameraChooserWrap) cameraChooserWrap.style.display = 'none';
+        hasTriedCompatMode = false;
+        scannerMode = 'standard';
+        scanFailCount = 0;
+        hasSubmittedFromScan = false;
+        qrReader.innerHTML = ""; // Clear any leftover video elements
+    }
 </script>
 
 <?= view('parts/footer') ?>
