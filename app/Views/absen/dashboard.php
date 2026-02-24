@@ -4,15 +4,25 @@
 <div class="page-heading">
     <h3>Dashboard</h3>
 </div>
+<style>
+    .stats-card {
+        transition: all 0.3s ease;
+    }
+
+    .stats-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+</style>
+
 <div class="page-content">
     <section class="row ">
         <div class="col-12 col-lg-9">
             <div class="row">
-
                 <!-- Card Siswa Belum Hadir -->
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-5">
+                <div class="col-6 col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 stats-card shadow-sm">
+                        <div class="card-body px-4 py-4">
                             <div class="row">
                                 <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                                     <div class="stats-icon red mb-2">
@@ -28,9 +38,9 @@
                     </div>
                 </div>
                 <!-- Card Siswa Hadir -->
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-5">
+                <div class="col-6 col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 stats-card shadow-sm">
+                        <div class="card-body px-4 py-4">
                             <div class="row">
                                 <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                                     <div class="stats-icon green mb-2">
@@ -47,9 +57,9 @@
                 </div>
 
                 <!-- Card Siswa Ijin -->
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-5">
+                <div class="col-6 col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 stats-card shadow-sm">
+                        <div class="card-body px-4 py-4">
                             <div class="row">
                                 <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                                     <div class="stats-icon green mb-2">
@@ -66,9 +76,9 @@
                 </div>
 
                 <!-- Card Siswa Sakit -->
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-5">
+                <div class="col-6 col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 stats-card shadow-sm">
+                        <div class="card-body px-4 py-4">
                             <div class="row">
                                 <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                                     <div class="stats-icon green mb-2">
@@ -125,12 +135,12 @@
                         <h6 class="text-muted"><?= date('d') . ' ' . $bulan[$bulanIni] . ' ' . date('Y') ?></h6>
 
                         <?php if (session('role') === 'admin'): ?>
-                                <form action="<?= base_url('input') ?>" method="post">
-                                    <?= csrf_field() ?>
-                                    <button type="submit" class="btn btn-primary btn-block">
-                                        <i class="bi bi-plus-circle"></i> Input Absensi Hari Ini
-                                    </button>
-                                </form>
+                            <form action="<?= base_url('input') ?>" method="post">
+                                <?= csrf_field() ?>
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <i class="bi bi-plus-circle"></i> Input Absensi Hari Ini
+                                </button>
+                            </form>
                         <?php endif; ?>
 
                     </div>
@@ -141,21 +151,15 @@
         </div>
 
 
-        <div class="col-12">
-
-        </div>
-
-        <div class="col-12">
+        <div class="col-12 col-lg-9">
             <div class="card">
                 <div class="card-header">
                     <h4>Absensi hari ini</h4>
                 </div>
                 <div class="card-body">
-
-                    <div>
+                    <div class="table-responsive">
                         <table class="table table-striped" id="table1">
                             <thead>
-
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
@@ -164,24 +168,33 @@
                                     <th>Waktu Pulang</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 <?php if (!empty($absensi)): ?>
-                                        <?php $no = 1; ?>
-                                        <?php foreach ($absensi as $item): ?>
-                                                <tr>
-                                                    <td><?= $no++; ?></td>
-                                                    <td><?= esc($item['nama']); ?></td>
-                                                    <td><?= esc($item['sekolah']); ?></td>
-                                                    <td><?= esc($item['waktu']); ?></td>
-                                                    <td><?= esc($item['waktu_pulang']); ?></td>
-                                                </tr>
-                                        <?php endforeach; ?>
-
+                                    <?php $no = 1; ?>
+                                    <?php foreach ($absensi as $item): ?>
+                                        <tr>
+                                            <td><?= $no++; ?></td>
+                                            <td><?= esc($item['nama']); ?></td>
+                                            <td><?= esc($item['sekolah']); ?></td>
+                                            <td><?= esc($item['waktu']); ?></td>
+                                            <td><?= esc($item['waktu_pulang']); ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Statistik Kehadiran</h4>
+                </div>
+                <div class="card-body">
+                    <div id="chart-attendance"></div>
                 </div>
             </div>
         </div>
@@ -210,6 +223,25 @@
             }
         });
     });
+</script>
+
+<script>
+    // Attendance Pie Chart
+    var optionsAttendance = {
+        series: [<?= (int) $count_hadir ?>, <?= (int) $count_alpa ?>],
+        chart: {
+            width: '100%',
+            type: 'pie',
+        },
+        labels: ['Hadir', 'Belum Hadir'],
+        colors: ['#198754', '#dc3545'],
+        legend: {
+            position: 'bottom'
+        }
+    };
+
+    var chartAttendance = new ApexCharts(document.querySelector("#chart-attendance"), optionsAttendance);
+    chartAttendance.render();
 </script>
 
 

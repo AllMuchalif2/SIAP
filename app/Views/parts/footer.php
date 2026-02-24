@@ -17,8 +17,7 @@
 
 
 
-<!-- Need: Apexcharts -->
-<script src="<?= base_url('assets/extensions/apexcharts/apexcharts.min.js') ?>"></script>
+
 <script src="<?= base_url('assets/static/js/pages/dashboard.js') ?>"></script>
 <script src="<?= base_url('assets/extensions/jquery/jquery.min.js') ?>"></script>
 

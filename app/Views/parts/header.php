@@ -46,6 +46,9 @@ switch ($route) {
 
     <link rel="stylesheet" href="<?= base_url('assets/extensions/sweetalert2/sweetalert2.min.css') ?>">
 
+    <!-- Need: Apexcharts -->
+    <script src="<?= base_url('assets/extensions/apexcharts/apexcharts.min.js') ?>"></script>
+
 
 
 
