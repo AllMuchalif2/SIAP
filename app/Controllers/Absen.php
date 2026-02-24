@@ -6,12 +6,14 @@ use CodeIgniter\Controller;
 use App\Models\Absen_model;
 use App\Models\Siswa_model;
 use App\Models\User_model;
+use App\Models\Konfigurasi_model;
 
 class Absen extends Controller
 {
     protected $absensiModel;
     protected $siswaModel;
     protected $userModel;
+    protected $konfigurasiModel;
     protected $session;
     protected $db;
 
@@ -20,12 +22,14 @@ class Absen extends Controller
         $this->absensiModel = new Absen_model();
         $this->siswaModel = new Siswa_model();
         $this->userModel = new User_model();
+        $this->konfigurasiModel = new Konfigurasi_model();
         $this->session = session();
         $this->db = \Config\Database::connect();
     }
 
     public function index()
     {
+        $this->checkIP();
         $tanggal = date('Y-m-d');
 
         $absensi = $this->absensiModel
@@ -41,6 +45,7 @@ class Absen extends Controller
 
     public function absensi()
     {
+        $this->checkIP();
         $id_siswa = $this->normalizeScannedId($this->request->getPost('id_siswa'));
         $tanggal = date('Y-m-d');
         $waktu_sekarang = date('H:i:s');
@@ -88,6 +93,36 @@ class Absen extends Controller
         }
 
         return redirect()->to('/');
+    }
+
+    public function monitor()
+    {
+        $tanggal = date('Y-m-d');
+
+        $absensi = $this->absensiModel
+            ->select('absen.id_siswa, siswa.nama, siswa.sekolah, absen.waktu, absen.waktu_pulang, absen.keterangan')
+            ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
+            ->where('absen.tanggal', $tanggal)
+            ->where('absen.keterangan', 'Hadir')
+            ->orderBy('absen.waktu', 'ASC')
+            ->findAll();
+
+        return view('absen/monitor', ['absensi' => $absensi]);
+    }
+
+    private function checkIP()
+    {
+        $config = $this->konfigurasiModel->getKonfigurasi('ip_allowed');
+        if ($config) {
+            $allowedIPs = array_map('trim', explode(',', $config['value']));
+            $clientIP = $this->request->getIPAddress();
+
+            if (!in_array($clientIP, $allowedIPs)) {
+                // Jika IP tidak diperbolehkan, lgsg redirect ke dashboard sesuai permintaan user
+                header("Location: " . base_url('dashboard'));
+                exit();
+            }
+        }
     }
 
     private function normalizeScannedId(?string $raw): string

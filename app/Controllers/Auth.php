@@ -17,7 +17,9 @@ class Auth extends Controller
     // Halaman login
     public function login()
     {
-        // Jika sudah login, redirect ke halaman sesuai role jika diperlukan
+        if (session()->get('logged_in')) {
+            return redirect()->to('/dashboard');
+        }
         return view('auth/login');
     }
 
@@ -49,9 +51,9 @@ class Auth extends Controller
                 $this->userModel->update($user['id'], ['password' => $newHash]);
             }
             session()->set([
-                'user_id'   => $user['id'],
-                'username'  => $user['username'],
-                'role'      => $user['role'],
+                'user_id' => $user['id'],
+                'username' => $user['username'],
+                'role' => $user['role'],
                 'logged_in' => true
             ]);
             return redirect()->to('/dashboard');

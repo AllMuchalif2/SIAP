@@ -57,5 +57,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
 
         $routes->get('riwayat', 'Absen::riwayat');
 
+        $routes->get('konfigurasi', 'Konfigurasi::index');
+        $routes->post('konfigurasi/update', 'Konfigurasi::update');
     });
 });

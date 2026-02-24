@@ -15,7 +15,7 @@ class User extends BaseController
         helper('auth');
         check_login();
 
-        $except = ['show', 'newpass']; // metode yang boleh diakses siapa saja
+        $except = ['show', 'newpass']; 
         $currentMethod = service('router')->methodName();
 
         if (!in_array($currentMethod, $except)) {
