@@ -114,9 +114,7 @@
                         <a href="<?= base_url('siswa'); ?>" class="btn btn-secondary">Kembali</a>
                     </div>
                 <?php else: ?>
-                    <div class="alert alert-danger">
-                        Data siswa tidak ditemukan
-                    </div>
+
                     <a href="<?= base_url('siswa'); ?>" class="btn btn-secondary">Kembali</a>
                 <?php endif; ?>
             </div>

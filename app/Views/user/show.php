@@ -25,26 +25,7 @@
                 <h5>Detail User</h5>
             </div>
             <div class="card-body">
-                <?php if (session()->getFlashdata('error')): ?>
-                    <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-                        <?php
-                        if (is_array(session()->getFlashdata('error'))) {
-                            foreach (session()->getFlashdata('error') as $error) {
-                                echo esc($error) . '<br>';
-                            }
-                        } else {
-                            echo esc(session()->getFlashdata('error'));
-                        }
-                        ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php endif; ?>
-                <?php if (session()->getFlashdata('success')): ?>
-                    <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-                        <?= session()->getFlashdata('success') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php endif; ?>
+
                 <div class="row mb-4 mt-4">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -58,7 +39,8 @@
                         <div class="form-group">
                             <label for="disabledInput">Role</label>
                             <p class="form-control-static" id="staticInput">
-                                <?= esc($user['role']) == 'admin' ? 'Admin' : 'Asisten'; ?></p>
+                                <?= esc($user['role']) == 'admin' ? 'Admin' : 'Asisten'; ?>
+                            </p>
                         </div>
                     </div>
                     <div class="col-md-6">

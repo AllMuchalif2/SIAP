@@ -30,13 +30,45 @@
 <script src="<?= base_url('assets/extensions/sweetalert2/sweetalert2.all.min.js') ?>"></script>
 
 <script>
-    setTimeout(function () {
-        let alert = document.querySelector('.alert');
-        if (alert) {
-            alert.classList.add('fade');
-            setTimeout(() => alert.remove(), 500); // Allow fade-out animation before removing
+    // Konfigurasi SweetAlert2 Toast
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
-    }, 3000);
+    });
+
+    // Cek flashdata dari PHP dan tampilkan Toast
+    <?php if (session()->getFlashdata('success')): ?>
+        Toast.fire({
+            icon: 'success',
+            title: '<?= session()->getFlashdata('success') ?>'
+        });
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('error')): ?>
+        Toast.fire({
+            icon: 'error',
+            title: '<?= session()->getFlashdata('error') ?>'
+        });
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('errors')): ?>
+        <?php
+        $errors = session()->getFlashdata('errors');
+        $errorMsg = is_array($errors) ? implode('<br>', $errors) : $errors;
+        ?>
+        Toast.fire({
+            icon: 'error',
+            title: 'Terjadi Kesalahan',
+            html: '<?= $errorMsg ?>'
+        });
+    <?php endif; ?>
 
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();

@@ -21,21 +21,20 @@
                     <!-- <div class="auth-logo">
                         <a href="index.html"><img src="./assets/compiled/svg/logo.svg" alt="Logo"></a>
                     </div> -->
-                    <h1 class="auth-title">Log in.</h1>
-                    <?php if (session()->getFlashdata('error')): ?>
-                        <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-                    <?php endif; ?>
+                    <hr>
 
                     <form action="/attempt-login" method="POST">
                         <?= csrf_field() ?>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="Username" name="username" required>
+                            <input type="text" class="form-control form-control-xl" placeholder="Username"
+                                name="username" required>
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Password" name="password" required>
+                            <input type="password" class="form-control form-control-xl" placeholder="Password"
+                                name="password" required>
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
@@ -56,6 +55,31 @@
 
     </div>
 
+    <!-- SweetAlert2 -->
+    <script src="<?= base_url('assets/extensions/sweetalert2/sweetalert2.all.min.js') ?>"></script>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+        });
+
+        <?php if (session()->getFlashdata('error')): ?>
+            Toast.fire({
+                icon: 'error',
+                title: '<?= session()->getFlashdata('error') ?>'
+            });
+        <?php endif; ?>
+
+        <?php if (session()->getFlashdata('success')): ?>
+            Toast.fire({
+                icon: 'success',
+                title: '<?= session()->getFlashdata('success') ?>'
+            });
+        <?php endif; ?>
+    </script>
 </body>
 
 </html>

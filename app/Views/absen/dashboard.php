@@ -142,11 +142,7 @@
 
 
         <div class="col-12">
-            <?php if (session()->getFlashdata('success')): ?>
-                    <div class="alert alert-success">
-                        <?= session()->getFlashdata('success') ?>
-                    </div>
-            <?php endif; ?>
+
         </div>
 
         <div class="col-12">
