@@ -13,8 +13,8 @@ class UsersSeeder extends Seeder
                 'id' => 0,
                 'username' => 'arnama',
                 'name' => 'arnama',
-                // password: arnama (bcrypt hash dari SQL asli)
-                'password' => '$2y$10$bKrnNGrBwks.fNOzPqUxPeZ.Edquw8KWlRF/GwNtwmkKLeh.jQWgG',
+                // password: arnama
+                'password' => '$2y$10$L.iFxHLh4upGP1cVDBFfx.Epl2ldr9PXTsuVdqMW4O2TwCOGfeiKS',
                 'role' => 'admin',
             ],
             [
