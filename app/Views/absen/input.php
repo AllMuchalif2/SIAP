@@ -34,7 +34,6 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
 
     <!-- Flash -->
 
-
     <div class="row g-3">
 
         <!-- KOLOM KIRI -->
@@ -50,11 +49,32 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
 
                     <!-- Toggle tema -->
                     <div class="d-flex justify-content-center align-items-center gap-2 mb-4">
-                        <i class="bi bi-sun-fill text-warning"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20"
+                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
+                            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M10.5 14.5c2.219 0 4-1.763 4-3.982a4.003 4.003 0 0 0-4-4.018c-2.219 0-4 1.781-4 4c0 2.219 1.781 4 4 4zM4.136 4.136L5.55 5.55m9.9 9.9l1.414 1.414M1.5 10.5h2m14 0h2M4.135 16.863L5.55 15.45m9.899-9.9l1.414-1.415M10.5 19.5v-2m0-14v-2"
+                                    opacity=".3"></path>
+                                <g transform="translate(-210 -1)">
+                                    <path d="M220.5 2.5v2m6.5.5l-1.5 1.5"></path>
+                                    <circle cx="220.5" cy="11.5" r="4"></circle>
+                                    <path d="m214 5l1.5 1.5m5 14v-2m6.5-.5l-1.5-1.5M214 18l1.5-1.5m-4-5h2m14 0h2">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
                         <div class="form-check form-switch mb-0">
                             <input class="form-check-input" type="checkbox" id="toggle-dark" role="switch">
                         </div>
-                        <i class="bi bi-moon-stars-fill text-secondary"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20"
+                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="m17.75 4.09l-2.53 1.94l.91 3.06l-2.63-1.81l-2.63 1.81l.91-3.06l-2.53-1.94L12.44 4l1.06-3l1.06 3l3.19.09m3.5 6.91l-1.64 1.25l.59 1.98l-1.7-1.17l-1.7 1.17l.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95l2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85c-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14c.4-.4.82-.76 1.27-1.08c.75-.53 1.93.36 1.85 1.19c-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82c-2.81 3.14-2.7 7.96.31 10.98c3.02 3.01 7.84 3.12 10.98.31Z">
+                            </path>
+                        </svg>
                     </div>
 
                     <!-- Form -->
@@ -85,13 +105,14 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
                     <div class="row g-2 mt-3 text-center">
                         <div class="col-6">
                             <div class="border rounded p-2">
-                                <div class="fw-bold text-success fs-5"><?= $jmlBerangkat ?></div>
+                                <div class="fw-bold text-success fs-5" id="countBerangkatMini"><?= $jmlBerangkat ?>
+                                </div>
                                 <small class="text-muted">Berangkat</small>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="border rounded p-2">
-                                <div class="fw-bold text-danger fs-5"><?= $jmlPulang ?></div>
+                                <div class="fw-bold text-danger fs-5" id="countPulangMini"><?= $jmlPulang ?></div>
                                 <small class="text-muted">Pulang</small>
                             </div>
                         </div>
@@ -106,9 +127,8 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
             <!-- Tabel Berangkat -->
             <div class="card mb-3">
                 <div class="card-header d-flex align-items-center">
-                    <i class="bi bi-box-arrow-in-right text-success me-2"></i>
                     <span class="fw-semibold">Daftar Berangkat</span>
-                    <span class="badge bg-success ms-auto"><?= $jmlBerangkat ?></span>
+                    <span class="badge bg-success ms-auto" id="countBerangkatBadge"><?= $jmlBerangkat ?></span>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-sm table-striped mb-0">
@@ -120,7 +140,7 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
                                 <th>Waktu</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbodyBerangkat">
                             <?php $no = 1;
                             $ada = false; ?>
                             <?php foreach ($absensi ?? [] as $item): ?>
@@ -147,9 +167,8 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
             <!-- Tabel Pulang -->
             <div class="card">
                 <div class="card-header d-flex align-items-center">
-                    <i class="bi bi-box-arrow-right text-danger me-2"></i>
                     <span class="fw-semibold">Daftar Pulang</span>
-                    <span class="badge bg-danger ms-auto"><?= $jmlPulang ?></span>
+                    <span class="badge bg-danger ms-auto" id="countPulangBadge"><?= $jmlPulang ?></span>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-sm table-striped mb-0">
@@ -161,7 +180,7 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
                                 <th>Waktu</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbodyPulang">
                             <?php $no = 1;
                             $ada = false; ?>
                             <?php foreach ($absensi ?? [] as $item): ?>
@@ -189,312 +208,16 @@ $jmlPulang = count(array_filter($absensi ?? [], fn($a) => !empty($a['waktu_pulan
     </div>
 </div>
 
-<script>
-    // Jam live
-    function tick() {
-        const n = new Date(), p = x => String(x).padStart(2, '0');
-        document.getElementById('liveClock').textContent = p(n.getHours()) + ':' + p(n.getMinutes()) + ':' + p(n.getSeconds());
-    }
-    tick(); setInterval(tick, 1000);
-
-    // Dark mode
-    (function () {
-        const t = document.getElementById('toggle-dark');
-        if (!t) return;
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-bs-theme', 'dark');
-            t.checked = true;
-        }
-        t.addEventListener('change', function () {
-            if (this.checked) {
-                document.documentElement.setAttribute('data-bs-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.removeAttribute('data-bs-theme');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    })();
-
-    // Clear & refocus setelah submit
-    document.getElementById('formAbsen').addEventListener('submit', function () {
-        setTimeout(() => {
-            const i = document.getElementById('id_siswa');
-            i.value = '';
-            i.focus();
-        }, 200);
-    });
-</script>
-
 <!-- html5-qrcode CDN -->
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
 <script>
-    let html5QrCode = null;
-    let availableCameras = [];
-    let selectedCameraId = null;
-    let scanFailCount = 0;
-    let hasTriedCompatMode = false;
-    let scannerMode = 'standard';
-    let fallbackTimer = null;
-    let hasSubmittedFromScan = false;
-    let fallbackCanvas = null;
-    let fallbackCtx = null;
-    const btnToggle = document.getElementById('btnToggleScan');
-    const scanArea = document.getElementById('qrScanArea');
-    const qrReader = document.getElementById('qrReader');
-    const scanStatus = document.getElementById('scanStatus');
-    const cameraChooserWrap = document.getElementById('cameraChooserWrap');
-    const cameraChooser = document.getElementById('cameraChooser');
-
-    function pickBestCamera(cameras) {
-        if (!cameras || !cameras.length) return null;
-        const backCam = cameras.find(c => /rear|back|environment|belakang/i.test(c.label || ''));
-        return (backCam || cameras[0]).id;
-    }
-
-    async function loadCameras() {
-        availableCameras = await Html5Qrcode.getCameras();
-        if (!availableCameras.length) throw new Error('Kamera tidak ditemukan');
-
-        selectedCameraId = selectedCameraId || pickBestCamera(availableCameras);
-
-        if (cameraChooser) {
-            cameraChooser.innerHTML = availableCameras
-                .map((cam, idx) => {
-                    const label = cam.label || `Kamera ${idx + 1}`;
-                    const selected = cam.id === selectedCameraId ? 'selected' : '';
-                    return `<option value="${cam.id}" ${selected}>${label}</option>`;
-                })
-                .join('');
-        }
-        if (cameraChooserWrap) cameraChooserWrap.style.display = availableCameras.length > 1 ? 'block' : 'none';
-    }
-
-    async function restartScannerWith(cameraId) {
-        selectedCameraId = cameraId;
-        if (html5QrCode && html5QrCode.isScanning) {
-            try {
-                await html5QrCode.stop();
-            } catch (e) {
-                console.warn('Stop before restart failed:', e);
-            }
-        }
-        await mulaiScanner();
-    }
-
-    function startJsQrFallback() {
-        stopJsQrFallback();
-        fallbackCanvas = document.createElement('canvas');
-        fallbackCtx = fallbackCanvas.getContext('2d', { willReadFrequently: true });
-
-        fallbackTimer = setInterval(() => {
-            if (hasSubmittedFromScan) return;
-            if (!scanArea || scanArea.style.display === 'none') return;
-
-            const video = qrReader.querySelector('video');
-            if (!video || video.readyState < 2) return;
-
-            const width = video.videoWidth || 0;
-            const height = video.videoHeight || 0;
-            if (!width || !height) return;
-
-            fallbackCanvas.width = width;
-            fallbackCanvas.height = height;
-            fallbackCtx.drawImage(video, 0, 0, width, height);
-
-            const imageData = fallbackCtx.getImageData(0, 0, width, height);
-            const result = jsQR(imageData.data, width, height, {
-                inversionAttempts: 'attemptBoth'
-            });
-
-            if (result && result.data) {
-                console.log('QR detected by jsQR fallback:', result.data);
-                onScanSuccess(result.data);
-            }
-        }, 220);
-    }
-
-    function stopJsQrFallback() {
-        if (fallbackTimer) {
-            clearInterval(fallbackTimer);
-            fallbackTimer = null;
-        }
-        fallbackCanvas = null;
-        fallbackCtx = null;
-    }
-
-    if (cameraChooser) {
-        cameraChooser.addEventListener('change', async function () {
-            if (!this.value) return;
-            if (scanStatus) scanStatus.textContent = 'Mengganti kamera...';
-            try {
-                await restartScannerWith(this.value);
-            } catch (err) {
-                console.error('Gagal mengganti kamera:', err);
-                if (scanStatus) scanStatus.textContent = 'Gagal mengganti kamera.';
-            }
-        });
-    }
-
-    btnToggle.addEventListener('click', function () {
-        console.log("Scanner toggle clicked");
-        if (!html5QrCode || !html5QrCode.isScanning) {
-            scanArea.style.display = 'block';
-            btnToggle.innerHTML = '<i class="bi bi-x-circle me-1"></i> Tutup Scanner';
-            btnToggle.classList.replace('btn-outline-secondary', 'btn-outline-danger');
-            if (scanStatus) scanStatus.textContent = 'Menyalakan kamera...';
-
-            mulaiScanner();
-        } else {
-            stopScanner();
-        }
-    });
-
-    async function mulaiScanner() {
-        console.log("Starting scanner...");
-        try {
-            if (!html5QrCode) {
-                html5QrCode = new Html5Qrcode("qrReader");
-            }
-            if (!availableCameras.length) {
-                await loadCameras();
-            }
-
-            const config = scannerMode === 'standard'
-                ? {
-                    fps: 10,
-                    rememberLastUsedCamera: true,
-                    disableFlip: false
-                }
-                : {
-                    fps: 6,
-                    qrbox: { width: 280, height: 280 },
-                    rememberLastUsedCamera: true,
-                    disableFlip: true
-                };
-
-            scanFailCount = 0;
-            const cameraIdToUse = selectedCameraId || pickBestCamera(availableCameras);
-            await html5QrCode.start(
-                cameraIdToUse,
-                config,
-                onScanSuccess,
-                onScanFailure
-            );
-            startJsQrFallback();
-            console.log("Scanner started with cameraId:", cameraIdToUse);
-            if (scanStatus) {
-                scanStatus.textContent = scannerMode === 'standard'
-                    ? 'Scanner aktif. Arahkan QR ke dalam frame.'
-                    : 'Mode kompatibilitas aktif. Arahkan QR ke dalam frame.';
-            }
-        } catch (err) {
-            console.error("Scanner failed to start:", err);
-            alert("Gagal mengakses kamera. Pastikan izin kamera diaktifkan dan gunakan HTTPS/localhost.");
-            if (scanStatus) scanStatus.textContent = 'Gagal mengakses kamera.';
-            stopScanner();
-        }
-    }
-
-    function onScanSuccess(decodedText) {
-        if (hasSubmittedFromScan) return;
-        console.log("QR Code detected:", decodedText);
-        const parsedId = extractSiswaId(decodedText);
-        if (!parsedId) {
-            if (scanStatus) scanStatus.textContent = 'QR terbaca tapi format ID tidak valid.';
-            return;
-        }
-        hasSubmittedFromScan = true;
-        document.getElementById('id_siswa').value = parsedId;
-        if (scanStatus) scanStatus.textContent = 'QR terdeteksi, mengirim absensi...';
-        stopScanner();
-        document.getElementById('formAbsen').submit();
-    }
-
-    function extractSiswaId(rawText) {
-        const text = normalizeRawQrText(rawText);
-        if (!text) return '';
-
-        const prefixedMatch = text.match(/(?:^|\s)ABSEN\s*:\s*([^\s]+)/i);
-        if (prefixedMatch && prefixedMatch[1]) {
-            return sanitizeId(prefixedMatch[1]);
-        }
-
-        if (/^https?:\/\//i.test(text)) {
-            try {
-                const url = new URL(text);
-                const params = url.searchParams;
-                const idFromUrl = params.get('id_siswa') || params.get('id') || params.get('siswa');
-                if (idFromUrl) return sanitizeId(idFromUrl);
-                const lastPath = (url.pathname || '').split('/').filter(Boolean).pop() || '';
-                if (lastPath) return sanitizeId(lastPath);
-            } catch (e) {
-                console.warn('QR URL parse gagal:', e);
-            }
-        }
-
-        const firstLine = text.split(/\r?\n/)[0] || text;
-        return sanitizeId(firstLine);
-    }
-
-    function normalizeRawQrText(value) {
-        return String(value || '')
-            .replace(/\u200B|\u200C|\u200D|\uFEFF/g, '')
-            .trim();
-    }
-
-    function sanitizeId(value) {
-        const cleaned = normalizeRawQrText(value);
-        if (!cleaned) return '';
-        const match = cleaned.match(/[A-Za-z0-9._\/-]{1,20}/);
-        if (!match) return '';
-        return match[0];
-    }
-
-    function onScanFailure(errorMessage) {
-        scanFailCount++;
-
-        if (!hasTriedCompatMode && scannerMode === 'standard' && scanFailCount >= 120) {
-            hasTriedCompatMode = true;
-            scannerMode = 'compat';
-            if (scanStatus) scanStatus.textContent = 'QR sulit dibaca, beralih ke mode kompatibilitas...';
-            restartScannerWith(selectedCameraId).catch(err => {
-                console.error('Gagal masuk mode kompatibilitas:', err);
-            });
-            return;
-        }
-
-        if (scanStatus && scanFailCount % 20 === 0) {
-            scanStatus.textContent = 'Mencoba membaca QR...';
-        }
-        if (scanFailCount % 50 === 0 && errorMessage) {
-            console.debug('Scan failure info:', errorMessage);
-        }
-    }
-
-    async function stopScanner() {
-        console.log("Stopping scanner...");
-        stopJsQrFallback();
-        if (html5QrCode && html5QrCode.isScanning) {
-            try {
-                await html5QrCode.stop();
-                console.log("Scanner stopped.");
-            } catch (err) {
-                console.warn("Failed to stop scanner cleanly:", err);
-            }
-        }
-        scanArea.style.display = 'none';
-        btnToggle.innerHTML = '<i class="bi bi-qr-code-scan me-1"></i> Scan QR Code';
-        btnToggle.classList.replace('btn-outline-danger', 'btn-outline-secondary');
-        if (scanStatus) scanStatus.textContent = 'Arahkan kamera ke QR Code siswa';
-        if (cameraChooserWrap) cameraChooserWrap.style.display = 'none';
-        hasTriedCompatMode = false;
-        scannerMode = 'standard';
-        scanFailCount = 0;
-        hasSubmittedFromScan = false;
-        qrReader.innerHTML = ""; // Clear any leftover video elements
-    }
+    window.AbsenInputConfig = {
+        rootUrl: '<?= site_url('/') ?>',
+        refreshInterval: 10000
+    };
 </script>
+<script src="<?= base_url('assets/static/js/app/absen-input-core.js') ?>"></script>
+<script src="<?= base_url('assets/static/js/app/absen-input-scanner.js') ?>"></script>
 
 <?= view('parts/footer') ?>

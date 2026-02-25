@@ -30,39 +30,59 @@ class Absen extends Controller
     public function index()
     {
         $this->checkIP();
-        $tanggal = date('Y-m-d');
+        $payload = $this->getTodayAbsensiPayload();
 
-        $absensi = $this->absensiModel
-            ->select('absen.id_siswa, siswa.nama, siswa.sekolah, absen.waktu, absen.waktu_pulang, absen.keterangan')
-            ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
-            ->where('absen.tanggal', $tanggal)
-            ->where('absen.keterangan', 'Hadir')
-            ->orderBy('absen.waktu', 'ASC')
-            ->findAll();
+        if ($this->request->isAJAX()) {
+            return $this->response->setJSON([
+                'success' => true,
+                'data' => $payload,
+                'csrf' => [
+                    'token' => csrf_token(),
+                    'hash' => csrf_hash(),
+                ],
+            ]);
+        }
 
-        return view('absen/input', ['absensi' => $absensi]);
+        return view('absen/input', ['absensi' => $payload['absensi']]);
     }
 
     public function absensi()
     {
         $this->checkIP();
+        $isAjax = $this->request->isAJAX();
         $id_siswa = $this->normalizeScannedId($this->request->getPost('id_siswa'));
         $tanggal = date('Y-m-d');
         $waktu_sekarang = date('H:i:s');
 
-        if ($id_siswa === '') {
-            session()->setFlashdata('error', 'ID siswa tidak valid dari hasil scan.');
+        $respond = function (bool $success, string $message, int $statusCode = 200) use ($isAjax) {
+            if ($isAjax) {
+                return $this->response
+                    ->setStatusCode($statusCode)
+                    ->setJSON([
+                        'success' => $success,
+                        'message' => $message,
+                        'data' => $this->getTodayAbsensiPayload(),
+                        'csrf' => [
+                            'token' => csrf_token(),
+                            'hash' => csrf_hash(),
+                        ],
+                    ]);
+            }
+
+            session()->setFlashdata($success ? 'success' : 'error', $message);
             return redirect()->to('/');
+        };
+
+        if ($id_siswa === '') {
+            return $respond(false, 'ID siswa tidak valid dari hasil scan.', 422);
         }
 
         $siswa = $this->siswaModel->find($id_siswa);
         if (!$siswa) {
-            session()->setFlashdata('error', 'Siswa tidak ditemukan.<br>Periksa kembali id user');
-            return redirect()->to('/');
+            return $respond(false, 'Siswa tidak ditemukan.<br>Periksa kembali id user', 404);
         }
         if ($siswa['status'] !== 'active') {
-            session()->setFlashdata('error', esc($siswa['nama']) . '<br> tidak dapat melakukan absensi karena sudah selesai prakerin.');
-            return redirect()->to('/');
+            return $respond(false, esc($siswa['nama']) . '<br> tidak dapat melakukan absensi karena sudah selesai prakerin.', 422);
         }
 
         $absensi = $this->absensiModel->where(['id_siswa' => $id_siswa, 'tanggal' => $tanggal])->first();
@@ -76,23 +96,21 @@ class Absen extends Controller
                 'waktu' => $waktu_sekarang
             ];
             $this->absensiModel->insert($data);
-            session()->setFlashdata('success', 'Absensi masuk berhasil <br><b>' . esc($siswa['nama']) . '</b>');
+            return $respond(true, 'Absensi masuk berhasil <br><b>' . esc($siswa['nama']) . '</b>');
         } elseif ($absensi['keterangan'] === 'Alpa') {
             // Update dari Alpa ke Hadir
             $this->absensiModel->absen($id_siswa, $tanggal);
-            session()->setFlashdata('success', 'Absensi berhasil <br><b>' . esc($siswa['nama']) . '</b>');
+            return $respond(true, 'Absensi berhasil <br><b>' . esc($siswa['nama']) . '</b>');
         } elseif ($absensi['keterangan'] === 'Hadir' && is_null($absensi['waktu_pulang'])) {
             // Catat waktu pulang
             $this->absensiModel
                 ->where('id_absen', $absensi['id_absen'])
                 ->set('waktu_pulang', $waktu_sekarang)
                 ->update();
-            session()->setFlashdata('success', 'Absensi pulang berhasil <br><b>' . esc($siswa['nama']) . '</b>');
+            return $respond(true, 'Absensi pulang berhasil <br><b>' . esc($siswa['nama']) . '</b>');
         } else {
-            session()->setFlashdata('error', esc($siswa['nama']) . '<br> sudah melakukan absensi hari ini.');
+            return $respond(false, esc($siswa['nama']) . '<br> sudah melakukan absensi hari ini.', 422);
         }
-
-        return redirect()->to('/');
     }
 
     public function monitor()
@@ -175,6 +193,25 @@ class Absen extends Controller
         }
 
         return '';
+    }
+
+    private function getTodayAbsensiPayload(): array
+    {
+        $tanggal = date('Y-m-d');
+
+        $absensi = $this->absensiModel
+            ->select('absen.id_siswa, siswa.nama, siswa.sekolah, absen.waktu, absen.waktu_pulang, absen.keterangan')
+            ->join('siswa', 'siswa.id_siswa = absen.id_siswa')
+            ->where('absen.tanggal', $tanggal)
+            ->where('absen.keterangan', 'Hadir')
+            ->orderBy('absen.waktu', 'ASC')
+            ->findAll();
+
+        return [
+            'absensi' => $absensi,
+            'jml_berangkat' => count(array_filter($absensi, static fn($item) => !empty($item['waktu']))),
+            'jml_pulang' => count(array_filter($absensi, static fn($item) => !empty($item['waktu_pulang']))),
+        ];
     }
 
     public function dashboard()
