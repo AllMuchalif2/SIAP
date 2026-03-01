@@ -76,7 +76,9 @@
                                             </a>
                                             <!-- Tombol QR Code -->
                                             <button type="button" class="btn btn-sm btn-secondary btn-show-qr"
-                                                data-id="<?= esc($row['id_siswa']) ?>" data-nama="<?= esc($row['nama']) ?>"
+                                                data-id="<?= esc($row['id_siswa']) ?>" 
+                                                data-nama="<?= esc($row['nama']) ?>"
+                                                data-sekolah="<?= esc($row['sekolah']) ?>"
                                                 data-toggle="tooltip" title="QR Code">
                                                 <i class="bi bi-qr-code"></i>
                                             </button>
@@ -203,6 +205,7 @@
 
             const id = btn.dataset.id;
             const nama = btn.dataset.nama;
+            const sekolah = btn.dataset.sekolah;
 
             document.getElementById('qrNamaSiswa').textContent = nama;
             document.getElementById('qrIdSiswa').textContent = 'ID: ' + id;
@@ -225,18 +228,49 @@
             setTimeout(function () {
                 const canvas = container.querySelector('canvas');
                 if (canvas) {
-                    const padded = document.createElement('canvas');
-                    const pad = 24;
-                    padded.width = canvas.width + (pad * 2);
-                    padded.height = canvas.height + (pad * 2);
-                    const ctx = padded.getContext('2d');
+                    const qrSize = canvas.width;
+                    const padding = 30;
+                    const headerHeight = 70; // Ruang untuk Nama Sekolah & Nama Siswa
+                    const footerHeight = 50; // Ruang untuk ID
+                    
+                    const cardWidth = qrSize + (padding * 2);
+                    const cardHeight = qrSize + headerHeight + footerHeight + padding;
+
+                    const cardCanvas = document.createElement('canvas');
+                    cardCanvas.width = cardWidth;
+                    cardCanvas.height = cardHeight;
+                    const ctx = cardCanvas.getContext('2d');
+
+                    // Background putih
                     ctx.fillStyle = '#ffffff';
-                    ctx.fillRect(0, 0, padded.width, padded.height);
-                    ctx.drawImage(canvas, pad, pad);
+                    ctx.fillRect(0, 0, cardWidth, cardHeight);
+
+                    // Border kartu (opsional, untuk mempertegas batas)
+                    ctx.strokeStyle = '#eeeeee';
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(5, 5, cardWidth - 10, cardHeight - 10);
+
+                    // Header: Nama Sekolah (Bold Besar)
+                    ctx.fillStyle = '#000000';
+                    ctx.textAlign = 'center';
+                    ctx.font = 'bold 24px sans-serif';
+                    ctx.fillText(sekolah.toUpperCase(), cardWidth / 2, 45);
+
+                    // Sub-Header: Nama Siswa (Dibawah sekolah)
+                    ctx.font = '500 18px sans-serif';
+                    ctx.fillText(nama, cardWidth / 2, 75);
+
+                    // Gambar QR Code (Ditengah)
+                    ctx.drawImage(canvas, padding, headerHeight + 20);
+
+                    // Footer: ID Siswa (Dibawah QR)
+                    ctx.font = 'bold 16px sans-serif';
+                    ctx.fillStyle = '#555555';
+                    ctx.fillText('ID: ' + id, cardWidth / 2, cardHeight - 25);
 
                     const link = document.getElementById('btnDownloadQR');
-                    link.href = padded.toDataURL('image/png');
-                    link.download = 'QR-' + nama.replace(/\s+/g, '_') + '.png';
+                    link.href = cardCanvas.toDataURL('image/png');
+                    link.download = 'KARTU-QR-' + nama.replace(/\s+/g, '_') + '.png';
                 }
             }, 100);
 
